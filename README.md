@@ -1,7 +1,18 @@
-## Getting Started
+# portfolio page
 
-실행은 아래의 명령어를 써보세용.
+## requirement
+```
+node: ^22.19.0
+```
 
+
+## install
 ```bash
-npm run dev
+$ npm install
+$ npm run build
+```
+
+## deploy to github page
+```bash
+$ npm run deploy
 ```
