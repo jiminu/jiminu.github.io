@@ -15,6 +15,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "portfolio",
   description: "Hello, world!",
+  metadataBase: new URL('https://jiminu.github.io'),
+  openGraph: {
+    title: 'portfolio',
+    description: '안녕하세요, 지민우입니다.',
+    images: ['/card_image.png'],
+    siteName: 'portfolio',
+  },
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
