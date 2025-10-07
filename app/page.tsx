@@ -2,25 +2,6 @@ import Image from "next/image";
 import axios from 'axios';
 import Link from "next/link";
 
-const getPortfolioData = async () => {
-  try {
-    const response = await axios.get('https://raw.githubusercontent.com/jiminu/first_deploy/refs/heads/main/service/resume_portfolio_service.json');
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-const getResumeData = async () => {
-  try {
-    const response = await axios.get('https://raw.githubusercontent.com/jiminu/first_deploy/refs/heads/main/service/resume_general_info_service.json');
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
