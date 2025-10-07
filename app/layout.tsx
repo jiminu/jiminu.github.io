@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "portfolio",
   description: "Hello, world!",
+  metadataBase: new URL('https://jiminu.github.io'),
   openGraph: {
     title: 'portfolio',
     url: 'https://jiminu.github.io',
