@@ -32,39 +32,25 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">성향</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {/* <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">간결함</h3>
-              <p className="text-gray-600 mb-4">
-                읽기 쉬운 코드가 좋은 코드라고 생각합니다. 코드 뿐 아니라 다른 방면에서도 거창한 것보다 간결한 것을 추구합니다.
-              </p>
-            </div> */}
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">간결함 </h3>
-              <ol className="text-gray-600 space-y-2">
-                <li>읽기 쉬운 코드가 좋은 코드라고 생각합니다.</li>
-                <li>화려함보다 간결함을 추구합니다.</li>
-              </ol>
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-start">
+              {/* <span className="text-2xl mb-2">⚡️</span> */}
+              <div className="font-bold text-lg mb-2 text-gray-900">실행력⚡️</div>
+              <div className="text-gray-600 text-sm">생각에만 머무르지 않고, 행동으로 옮깁니다.</div>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">약속 </h3>
-              <ol className="text-gray-600 space-y-2">
-                <li>규칙을 지키는 것은 협업의 기본입니다.</li>
-                <li>주어진 일은 반드시 해냅니다.</li>
-              </ol>
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-start">
+              {/* <span className="text-2xl mb-2">📅</span> */}
+              <div className="font-bold text-lg mb-2 text-gray-900">꾸준함 📅</div>
+              <div className="text-gray-600 text-sm">작은 목표라도 매일 지속적으로 실천합니다.</div>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">뭔가 하나 더</h3>
-              <ol className="text-gray-600 space-y-2">
-                <li>블라블라.</li>
-                <li>라블라블.</li>
-              </ol>
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-start">
+              {/* <span className="text-2xl mb-2">🤲</span> */}
+              <div className="font-bold text-lg mb-2 text-gray-900">배려 🤲</div>
+              <div className="text-gray-600 text-sm">상대방의 입장에서 먼저 생각하고 소통합니다.</div>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">뭔가 두개 더</h3>
-              <ol className="text-gray-600 space-y-2">
-                <li>블라블라.</li>
-                <li>라블라블.</li>
-              </ol>
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col items-start">
+              {/* <span className="text-2xl mb-2">🌱</span> */}
+              <div className="font-bold text-lg mb-2 text-gray-900">유연함 🌱</div>
+              <div className="text-gray-600 text-sm">새로운 변화나 의견을 열린 마음으로 받아들입니다.</div>
             </div>
           </div>
         </div>
@@ -268,7 +254,7 @@ export default function Home() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="bg-gray-50 py-16">
+      {/* <section id="education" className="bg-gray-50 py-16">
         <div className="max-w-4xl mx-auto px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">학력</h2>
           <div className="space-y-6">
@@ -294,7 +280,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
       <section id="contact" className="py-16">
