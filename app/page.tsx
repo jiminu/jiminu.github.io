@@ -77,21 +77,54 @@ export default function Home() {
                   <div className="text-gray-900 font-medium">2022 한국CDE학회</div>
                   <div className="text-gray-600 text-sm">2022</div>
                   <div className="text-gray-700 mt-1">외판원 문제(TSP)를 위한 Voronoi기반 발견적 해법</div>
+                  <Link
+                    href="/docs/2022_cde.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-blue-600 hover:underline"
+                  >
+                    PDF 열기
+                  </Link>
                 </li>
                 <li className="border-l-2 border-blue-500 pl-4">
                   <div className="text-gray-900 font-medium">2022 AMOS</div>
                   <div className="text-gray-600 text-sm">2022</div>
                   <div className="text-gray-700 mt-1">AMOS 부스 기업 참가</div>
+                  <Link
+                    href="/docs/2022_amos.JPG"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-blue-600 hover:underline"
+                  >
+                    사진 보기
+                  </Link>
                 </li>
                 <li className="border-l-2 border-blue-500 pl-4">
                   <div className="text-gray-900 font-medium">2023 한국항공우주학회</div>
                   <div className="text-gray-600 text-sm">2023</div>
                   <div className="text-gray-700 mt-1">AstroLibrary: 인공위성의 실시간 시공간 분석을 위한 RESTful API</div>
+                  <Link
+                    href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11439338"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-blue-600 hover:underline"
+                  >
+                    PDF 보기
+                  </Link>
                 </li>
                 <li className="border-l-2 border-blue-500 pl-4">
+                
                   <div className="text-gray-900 font-medium">2024 한국항공우주학회</div>
                   <div className="text-gray-600 text-sm">2024</div>
                   <div className="text-gray-700 mt-1">우주물체의 시공간 추론을 위한 Three-filter Algorithm의 수행 성능 분석</div>
+                  <Link
+                    href="/docs/2024_ksas.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-blue-600 hover:underline"
+                  >
+                    PDF 열기
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -187,7 +220,7 @@ export default function Home() {
             {/* Portfolio Website */}
             <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
               <Link
-                href="https://github.com/jiminu/first_deploy"
+                href="https://github.com/jiminu/jiminu.github.io"
                 target="_blank"
                 className="block"
               >
