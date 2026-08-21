@@ -1,13 +1,17 @@
+import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
 
 const requiredFiles = [
   'dist/index.html',
-  'dist/about/index.html',
   'dist/projects/index.html',
   'dist/notes/index.html',
 ];
 
 await Promise.all(requiredFiles.map((file) => access(file)));
+await assert.rejects(access('dist/about/index.html'), { code: 'ENOENT' });
+
+const home = await readFile('dist/index.html', 'utf8');
+assert.match(home, /href="https:\/\/github\.com\/jiminu"/);
 
 const css = await readFile('src/styles/global.css', 'utf8');
 for (const forbidden of ['linear-gradient(', 'box-shadow:', '@keyframes']) {
