@@ -35,6 +35,18 @@ for (const image of ['overview', 'architecture', 'anomaly-detection', 'ai-assist
 }
 assert.match(factoryTycoon, /href="https:\/\/github\.com\/factorytycoon"/);
 
+const projectsPage = await readFile('dist/projects/index.html', 'utf8');
+for (const thumbnail of [
+  '/images/selfishell/shell.png',
+  '/images/factory-tycoon/overview.png',
+]) {
+  assert.match(home, new RegExp(`class="entry-thumbnail"[^>]*>[\\s\\S]*?src="${thumbnail}"`));
+  assert.match(projectsPage, new RegExp(`class="entry-thumbnail"[^>]*>[\\s\\S]*?src="${thumbnail}"`));
+}
+
+const notesPage = await readFile('dist/notes/index.html', 'utf8');
+assert.doesNotMatch(notesPage, /class="entry-thumbnail"/);
+
 const css = await readFile('src/styles/global.css', 'utf8');
 for (const forbidden of ['linear-gradient(', 'box-shadow:', '@keyframes']) {
   if (css.includes(forbidden)) {

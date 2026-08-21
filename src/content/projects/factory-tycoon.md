@@ -3,6 +3,7 @@ title: "Factory Tycoon"
 description: "IoT 센서와 AWS 데이터 파이프라인으로 구현한 스마트 팩토리 운영 시뮬레이션"
 date: 2026-01-23
 draft: false
+thumbnail: "/images/factory-tycoon/overview.png"
 ---
 
 [GitHub 조직에서 보기](https://github.com/factorytycoon)

@@ -3,6 +3,7 @@ title: "Selfishell"
 description: "macOS, Ubuntu, WSL에서 같은 개발 환경을 유지하기 위한 관리형 Zsh 도구"
 date: 2026-08-19
 draft: false
+thumbnail: "/images/selfishell/shell.png"
 ---
 
 [GitHub에서 보기](https://github.com/jiminu/selfishell)

@@ -6,6 +6,7 @@ const entrySchema = z.object({
   description: z.string(),
   date: z.coerce.date(),
   draft: z.boolean().default(false),
+  thumbnail: z.string().optional(),
 });
 
 const projects = defineCollection({
