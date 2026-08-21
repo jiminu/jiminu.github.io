@@ -7,6 +7,8 @@ const requiredFiles = [
   'dist/projects/selfishell/index.html',
   'dist/projects/factory-tycoon/index.html',
   'dist/notes/index.html',
+  'dist/notes/redis-pubsub-for-websocket/index.html',
+  'dist/notes/keeping-zshrc-user-owned/index.html',
   'dist/images/selfishell/shell.png',
   'dist/images/selfishell/nvim.png',
   'dist/images/factory-tycoon/overview.png',
@@ -50,6 +52,11 @@ for (const thumbnail of [
 
 const notesPage = await readFile('dist/notes/index.html', 'utf8');
 assert.doesNotMatch(notesPage, /class="entry-thumbnail"/);
+
+for (const note of ['redis-pubsub-for-websocket', 'keeping-zshrc-user-owned']) {
+  assert.match(home, new RegExp(`href="/notes/${note}/"`));
+  assert.match(notesPage, new RegExp(`href="/notes/${note}/"`));
+}
 
 const css = await readFile('src/styles/global.css', 'utf8');
 for (const forbidden of ['linear-gradient(', 'box-shadow:', '@keyframes']) {
