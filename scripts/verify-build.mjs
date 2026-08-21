@@ -16,4 +16,16 @@ for (const forbidden of ['linear-gradient(', 'box-shadow:', '@keyframes']) {
   }
 }
 
+const workflow = await readFile('.github/workflows/deploy.yml', 'utf8');
+for (const required of [
+  'withastro/action@v6',
+  'actions/deploy-pages@v5',
+  'pages: write',
+  'id-token: write',
+]) {
+  if (!workflow.includes(required)) {
+    throw new Error(`Missing GitHub Pages setting: ${required}`);
+  }
+}
+
 console.log('Build verification passed.');
