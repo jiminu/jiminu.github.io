@@ -147,6 +147,14 @@ time,
   border: 1px solid var(--border);
 }
 
+.entry-body img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 2rem 0;
+  border: 1px solid var(--border);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #181817;

@@ -4,7 +4,10 @@ import { access, readFile } from 'node:fs/promises';
 const requiredFiles = [
   'dist/index.html',
   'dist/projects/index.html',
+  'dist/projects/selfishell/index.html',
   'dist/notes/index.html',
+  'dist/images/selfishell/shell.png',
+  'dist/images/selfishell/nvim.png',
 ];
 
 await Promise.all(requiredFiles.map((file) => access(file)));
@@ -12,6 +15,12 @@ await assert.rejects(access('dist/about/index.html'), { code: 'ENOENT' });
 
 const home = await readFile('dist/index.html', 'utf8');
 assert.match(home, /href="https:\/\/github\.com\/jiminu"/);
+assert.match(home, /href="\/projects\/selfishell\/"/);
+
+const selfishell = await readFile('dist/projects/selfishell/index.html', 'utf8');
+assert.match(selfishell, /src="\/images\/selfishell\/shell\.png"/);
+assert.match(selfishell, /src="\/images\/selfishell\/nvim\.png"/);
+assert.match(selfishell, /href="https:\/\/github\.com\/jiminu\/selfishell"/);
 
 const css = await readFile('src/styles/global.css', 'utf8');
 for (const forbidden of ['linear-gradient(', 'box-shadow:', '@keyframes']) {
