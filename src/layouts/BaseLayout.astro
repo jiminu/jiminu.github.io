@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'jiminu',
+  description = '개인 프로젝트와 기술 기록.',
+} = Astro.props;
+const pageTitle = title === 'jiminu' ? title : `${title} · jiminu`;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">본문으로 건너뛰기</a>
+    <header class="site-header">
+      <a class="site-name" href="/">jiminu</a>
+      <nav aria-label="주요 메뉴">
+        <a href="/about/">About</a>
+        <a href="/projects/">Projects</a>
+        <a href="/notes/">Notes</a>
+      </nav>
+    </header>
+    <main id="content">
+      <slot />
+    </main>
+    <footer>© {year} jiminu</footer>
+  </body>
+</html>

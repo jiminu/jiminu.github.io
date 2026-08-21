@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const byNewest = (a: { data: { date: Date } }, b: { data: { date: Date } }) =>
+  b.data.date.valueOf() - a.data.date.valueOf();
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft))
+  .sort(byNewest)
+  .slice(0, 5);
+const notes = (await getCollection('notes', ({ data }) => !data.draft))
+  .sort(byNewest)
+  .slice(0, 5);
+---
+
+<BaseLayout>
+  <section class="intro">
+    <h1>jiminu</h1>
+    <p>개인 프로젝트와 기술 기록.</p>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    {projects.length === 0 ? (
+      <p class="empty">아직 공개한 프로젝트가 없습니다.</p>
+    ) : (
+      <ul class="entry-list">
+        {projects.map((project) => (
+          <li>
+            <time datetime={project.data.date.toISOString()}>
+              {project.data.date.toISOString().slice(0, 10)}
+            </time>
+            <a href={`/projects/${project.id}/`}>{project.data.title}</a>
+            <p>{project.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+
+  <section>
+    <h2>Notes</h2>
+    {notes.length === 0 ? (
+      <p class="empty">아직 작성한 글이 없습니다.</p>
+    ) : (
+      <ul class="entry-list">
+        {notes.map((note) => (
+          <li>
+            <time datetime={note.data.date.toISOString()}>
+              {note.data.date.toISOString().slice(0, 10)}
+            </time>
+            <a href={`/notes/${note.id}/`}>{note.data.title}</a>
+            <p>{note.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</BaseLayout>

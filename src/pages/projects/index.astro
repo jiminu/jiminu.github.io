@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Projects" description="프로젝트 기록">
+  <h1>Projects</h1>
+  {projects.length === 0 ? (
+    <p class="empty">아직 공개한 프로젝트가 없습니다.</p>
+  ) : (
+    <ul class="entry-list">
+      {projects.map((project) => (
+        <li>
+          <time datetime={project.data.date.toISOString()}>
+            {project.data.date.toISOString().slice(0, 10)}
+          </time>
+          <a href={`/projects/${project.id}/`}>{project.data.title}</a>
+          <p>{project.data.description}</p>
+        </li>
+      ))}
+    </ul>
+  )}
+</BaseLayout>
