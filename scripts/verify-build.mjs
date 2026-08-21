@@ -18,6 +18,10 @@ const requiredFiles = [
 await Promise.all(requiredFiles.map((file) => access(file)));
 await assert.rejects(access('dist/about/index.html'), { code: 'ENOENT' });
 
+for (const file of requiredFiles.filter((file) => file.endsWith('.html'))) {
+  assert.doesNotMatch(await readFile(file, 'utf8'), /\u00b7/);
+}
+
 const home = await readFile('dist/index.html', 'utf8');
 assert.match(home, /href="https:\/\/github\.com\/jiminu"/);
 assert.match(home, /href="\/projects\/selfishell\/"/);
