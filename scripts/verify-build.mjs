@@ -33,13 +33,16 @@ assert.match(home, /href="https:\/\/github\.com\/jiminu"/);
 assert.match(home, /target="_blank"/);
 assert.match(home, /href="\/projects\/selfishell\/"/);
 assert.match(home, /querySelectorAll/);
-assert.match(home, /noopener noreferrer/);
+assert.match(home, /relList\.add/);
 
 const selfishell = await readFile('dist/projects/selfishell/index.html', 'utf8');
 assert.match(selfishell, /src="\/images\/selfishell\/shell\.png"/);
 assert.match(selfishell, /src="\/images\/selfishell\/nvim\.png"/);
 assert.match(selfishell, /href="https:\/\/github\.com\/jiminu\/selfishell"/);
 assert.match(selfishell, /href="\/projects\/"/);
+assert.match(selfishell, /<meta property="og:image" content="https:\/\/jiminu\.github\.io\/images\/selfishell\/shell\.png">/);
+assert.match(selfishell, /<meta name="twitter:image" content="https:\/\/jiminu\.github\.io\/images\/selfishell\/shell\.png">/);
+assert.match(selfishell, /<meta name="twitter:card" content="summary_large_image">/);
 
 assert.match(home, /href="\/projects\/factory-tycoon\/"/);
 
@@ -49,6 +52,9 @@ for (const image of ['overview', 'architecture', 'anomaly-detection', 'ai-assist
 }
 assert.match(factoryTycoon, /href="https:\/\/github\.com\/factorytycoon"/);
 assert.match(factoryTycoon, /href="\/projects\/"/);
+assert.match(factoryTycoon, /<meta property="og:image" content="https:\/\/jiminu\.github\.io\/images\/factory-tycoon\/overview\.png">/);
+assert.match(factoryTycoon, /<meta name="twitter:image" content="https:\/\/jiminu\.github\.io\/images\/factory-tycoon\/overview\.png">/);
+assert.match(factoryTycoon, /<meta name="twitter:card" content="summary_large_image">/);
 
 const projectsPage = await readFile('dist/projects/index.html', 'utf8');
 for (const thumbnail of [
@@ -61,12 +67,15 @@ for (const thumbnail of [
 
 const notesPage = await readFile('dist/notes/index.html', 'utf8');
 assert.doesNotMatch(notesPage, /class="entry-thumbnail"/);
+assert.doesNotMatch(notesPage, /property="og:image"/);
 
 for (const note of ['redis-pubsub-for-websocket', 'keeping-zshrc-user-owned']) {
   assert.match(home, new RegExp(`href="/notes/${note}/"`));
   assert.match(notesPage, new RegExp(`href="/notes/${note}/"`));
   const notePage = await readFile(`dist/notes/${note}/index.html`, 'utf8');
   assert.match(notePage, /href="\/notes\/"/);
+  assert.doesNotMatch(notePage, /property="og:image"/);
+  assert.match(notePage, /<meta name="twitter:card" content="summary">/);
 }
 
 const css = await readFile('src/styles/global.css', 'utf8');

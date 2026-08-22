@@ -5,16 +5,19 @@ interface Props {
   title?: string;
   description?: string;
   type?: 'website' | 'article';
+  image?: string;
 }
 
 const {
   title = 'jiminu',
   description = '개인 프로젝트와 기술 기록.',
   type = 'website',
+  image,
 } = Astro.props;
 const pageTitle = title === 'jiminu' ? title : `${title} | jiminu`;
 const year = new Date().getFullYear();
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://jiminu.github.io');
+const imageURL = image ? new URL(image, Astro.site ?? 'https://jiminu.github.io').toString() : undefined;
 ---
 
 <!doctype html>
@@ -32,7 +35,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://jiminu.g
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content={type} />
-    <meta name="twitter:card" content="summary" />
+    {imageURL && (
+      <>
+        <meta property="og:image" content={imageURL} />
+        <meta name="twitter:image" content={imageURL} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </>
+    )}
+    {!imageURL && (
+      <meta name="twitter:card" content="summary" />
+    )}
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <title>{pageTitle}</title>
@@ -55,7 +67,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://jiminu.g
       for (const link of document.querySelectorAll('a[href^="http://"], a[href^="https://"]')) {
         if (link instanceof HTMLAnchorElement && link.origin !== window.location.origin) {
           link.target = '_blank';
-          link.rel = 'noopener noreferrer';
+          link.relList.add('noopener', 'noreferrer');
         }
       }
     </script>

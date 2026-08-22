@@ -5,16 +5,17 @@ interface Props {
   title: string;
   description: string;
   date: Date;
+  image?: string;
 }
 
-const { title, description, date } = Astro.props;
+const { title, description, date, image } = Astro.props;
 const formattedDate = date.toISOString().slice(0, 10);
 const isProject = Astro.url.pathname.startsWith('/projects');
 const backLink = isProject ? '/projects/' : '/notes/';
 const backText = isProject ? '← Projects 목록' : '← Notes 목록';
 ---
 
-<BaseLayout {title} {description} type="article">
+<BaseLayout {title} {description} {image} type="article">
   <article class="entry">
     <header>
       <p><time datetime={date.toISOString()}>{formattedDate}</time></p>
