@@ -27,7 +27,7 @@ const notes = (await getCollection('notes', ({ data }) => !data.draft))
       <ul class="entry-list">
         {projects.map((project) => (
           <li class:list={{ 'has-thumbnail': project.data.thumbnail }}>
-            <div class="entry-summary">
+            <div>
               <time datetime={project.data.date.toISOString()}>
                 {project.data.date.toISOString().slice(0, 10)}
               </time>
