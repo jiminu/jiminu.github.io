@@ -51,5 +51,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://jiminu.g
       <slot />
     </main>
     <footer>© {year} jiminu</footer>
+    <script>
+      for (const link of document.querySelectorAll('a[href^="http://"], a[href^="https://"]')) {
+        if (link instanceof HTMLAnchorElement && link.origin !== window.location.origin) {
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
+      }
+    </script>
   </body>
 </html>

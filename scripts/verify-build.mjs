@@ -32,11 +32,13 @@ const home = await readFile('dist/index.html', 'utf8');
 assert.match(home, /href="https:\/\/github\.com\/jiminu"/);
 assert.match(home, /target="_blank"/);
 assert.match(home, /href="\/projects\/selfishell\/"/);
+assert.match(home, /querySelectorAll/);
+assert.match(home, /noopener noreferrer/);
 
 const selfishell = await readFile('dist/projects/selfishell/index.html', 'utf8');
 assert.match(selfishell, /src="\/images\/selfishell\/shell\.png"/);
 assert.match(selfishell, /src="\/images\/selfishell\/nvim\.png"/);
-assert.match(selfishell, /href="https:\/\/github\.com\/jiminu\/selfishell"[^>]*target="_blank"/);
+assert.match(selfishell, /href="https:\/\/github\.com\/jiminu\/selfishell"/);
 assert.match(selfishell, /href="\/projects\/"/);
 
 assert.match(home, /href="\/projects\/factory-tycoon\/"/);
@@ -45,7 +47,7 @@ const factoryTycoon = await readFile('dist/projects/factory-tycoon/index.html', 
 for (const image of ['overview', 'architecture', 'anomaly-detection', 'ai-assistant']) {
   assert.match(factoryTycoon, new RegExp(`src="/images/factory-tycoon/${image}\\.png"`));
 }
-assert.match(factoryTycoon, /href="https:\/\/github\.com\/factorytycoon"[^>]*target="_blank"/);
+assert.match(factoryTycoon, /href="https:\/\/github\.com\/factorytycoon"/);
 assert.match(factoryTycoon, /href="\/projects\/"/);
 
 const projectsPage = await readFile('dist/projects/index.html', 'utf8');
@@ -65,7 +67,6 @@ for (const note of ['redis-pubsub-for-websocket', 'keeping-zshrc-user-owned']) {
   assert.match(notesPage, new RegExp(`href="/notes/${note}/"`));
   const notePage = await readFile(`dist/notes/${note}/index.html`, 'utf8');
   assert.match(notePage, /href="\/notes\/"/);
-  assert.match(notePage, /target="_blank"/);
 }
 
 const css = await readFile('src/styles/global.css', 'utf8');
