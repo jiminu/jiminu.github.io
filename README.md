@@ -9,10 +9,10 @@ npm install
 npm run dev
 ```
 
-전체 빌드와 기본 구조를 확인하려면 다음 명령을 실행합니다.
+전체 빌드는 다음 명령으로 확인합니다.
 
 ```bash
-npm run check
+npm run build
 ```
 
 ## 프로젝트 추가

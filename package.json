@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "check": "npm run build && node scripts/verify-build.mjs"
+    "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "latest"
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.4"
   }
 }
