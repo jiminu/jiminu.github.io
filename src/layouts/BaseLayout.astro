@@ -4,14 +4,17 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  type?: 'website' | 'article';
 }
 
 const {
   title = 'jiminu',
   description = '개인 프로젝트와 기술 기록.',
+  type = 'website',
 } = Astro.props;
 const pageTitle = title === 'jiminu' ? title : `${title} | jiminu`;
 const year = new Date().getFullYear();
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://jiminu.github.io');
 ---
 
 <!doctype html>
@@ -21,6 +24,17 @@ const year = new Date().getFullYear();
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="jiminu" href="/rss.xml" />
+    <meta property="og:site_name" content="jiminu" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content={type} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
     <title>{pageTitle}</title>
   </head>
   <body>
@@ -30,7 +44,7 @@ const year = new Date().getFullYear();
       <nav aria-label="주요 메뉴">
         <a href="/projects/">Projects</a>
         <a href="/notes/">Notes</a>
-        <a href="https://github.com/jiminu" rel="me">GitHub</a>
+        <a href="https://github.com/jiminu" target="_blank" rel="me noopener noreferrer">GitHub</a>
       </nav>
     </header>
     <main id="content">

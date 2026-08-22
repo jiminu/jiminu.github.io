@@ -9,9 +9,12 @@ interface Props {
 
 const { title, description, date } = Astro.props;
 const formattedDate = date.toISOString().slice(0, 10);
+const isProject = Astro.url.pathname.startsWith('/projects');
+const backLink = isProject ? '/projects/' : '/notes/';
+const backText = isProject ? '← Projects 목록' : '← Notes 목록';
 ---
 
-<BaseLayout {title} {description}>
+<BaseLayout {title} {description} type="article">
   <article class="entry">
     <header>
       <p><time datetime={date.toISOString()}>{formattedDate}</time></p>
@@ -21,5 +24,8 @@ const formattedDate = date.toISOString().slice(0, 10);
     <div class="entry-body">
       <slot />
     </div>
+    <footer class="entry-footer">
+      <a href={backLink}>{backText}</a>
+    </footer>
   </article>
 </BaseLayout>
