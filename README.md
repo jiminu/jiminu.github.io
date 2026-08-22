@@ -1,6 +1,6 @@
 # jiminu.github.io
 
-개인 프로젝트와 기술 기록을 위한 Astro 정적 사이트입니다.
+개인 프로젝트와 기술 기록을 위한 Astro 기반 정적 사이트입니다.
 
 ## 로컬 실행
 
@@ -17,38 +17,39 @@ npm run build
 
 ## 프로젝트 추가
 
-`src/content/projects/` 아래에 Markdown 파일을 만듭니다.
+`src/content/projects/`에 Markdown 파일을 추가합니다.
 
-```markdown
+```md
 ---
-title: "프로젝트 제목"
-description: "프로젝트를 한 문장으로 설명합니다."
-date: 2026-08-21
-draft: false
+title: 프로젝트 이름
+description: 한 줄 설명
+date: 2026-01-01
+thumbnail: /images/example.png
 ---
 
-## 배경
-
-내용을 작성합니다.
+본문
 ```
 
-## 글 추가
+`thumbnail`은 선택 항목입니다.
 
-`src/content/notes/` 아래에 Markdown 파일을 만듭니다.
+## 노트 추가
 
-```markdown
+`src/content/notes/`에 Markdown 파일을 추가합니다.
+
+```md
 ---
-title: "글 제목"
-description: "글을 한 문장으로 설명합니다."
-date: 2026-08-21
-draft: false
+title: 노트 제목
+description: 한 줄 설명
+date: 2026-01-01
 ---
 
-내용을 작성합니다.
+본문
 ```
 
-`draft: true`인 항목은 목록과 상세 페이지에 공개되지 않습니다.
+공개하지 않을 글은 frontmatter에 `draft: true`를 추가합니다.
 
 ## 배포
 
-GitHub의 `jiminu/jiminu.github.io` 저장소에 푸시한 뒤, 저장소의 **Settings → Pages → Source**를 **GitHub Actions**로 설정합니다. 이후 `main` 브랜치에 푸시할 때마다 사이트가 자동으로 배포됩니다.
+GitHub Pages의 Source를 **GitHub Actions**로 설정합니다.
+
+`main` 브랜치에 push하면 `.github/workflows/deploy.yml`이 자동으로 빌드하고 배포합니다.
