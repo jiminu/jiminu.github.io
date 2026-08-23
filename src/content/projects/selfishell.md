@@ -4,6 +4,8 @@ description: "macOS, Ubuntu, WSL에서 같은 개발 환경을 유지하기 위�
 date: 2026-08-19
 draft: false
 thumbnail: "/images/selfishell/shell.png"
+notes:
+  - keeping-zshrc-user-owned
 ---
 
 [GitHub에서 보기](https://github.com/jiminu/selfishell)

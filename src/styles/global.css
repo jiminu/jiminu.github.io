@@ -209,6 +209,33 @@ time,
   border: 1px solid var(--border);
 }
 
+.related-section {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.related-section h2 {
+  margin: 0 0 1rem;
+  font-size: 1.15rem;
+}
+
+.related-project {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.related-project span {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.related-project a {
+  font-weight: 600;
+}
+
 .entry-footer {
   margin-top: 3rem;
   padding-top: 1.5rem;
