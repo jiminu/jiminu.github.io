@@ -25,12 +25,30 @@ jobs:
           node-version: 24
           cache: npm
       - name: Synchronize lockfile
-        run: npm install --package-lock-only --ignore-scripts
+        id: lock
+        run: |
+          npm install --package-lock-only --ignore-scripts
+          if git diff --quiet -- package-lock.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Commit synchronized lockfile
+        if: steps.lock.outputs.changed == 'true'
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add package-lock.json
+          git commit -m "chore: sync package lock"
+          git push
       - name: Install dependencies
+        if: steps.lock.outputs.changed == 'false'
         run: npm ci
       - name: Build existing content
+        if: steps.lock.outputs.changed == 'false'
         run: npm run build
       - name: Verify fenced HTML remains valid Markdown
+        if: steps.lock.outputs.changed == 'false'
         run: |
           cat > src/content/notes/__markdown-guard-test.md <<'EOF'
           ---
@@ -46,6 +64,7 @@ jobs:
           EOF
           npm run build
       - name: Verify raw HTML is rejected
+        if: steps.lock.outputs.changed == 'false'
         run: |
           printf '\n<div>This must fail the build.</div>\n' >> src/content/notes/__markdown-guard-test.md
           if npm run build; then
@@ -53,15 +72,17 @@ jobs:
             exit 1
           fi
           rm src/content/notes/__markdown-guard-test.md
-      - name: Commit synchronized lockfile
+      - name: Mark verification complete
+        if: steps.lock.outputs.changed == 'false'
         run: |
-          if git diff --quiet -- package-lock.json; then
+          if test -f .markdown-guard-verified; then
             exit 0
           fi
+          printf 'verified\n' > .markdown-guard-verified
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add package-lock.json
-          git commit -m "chore: sync package lock"
+          git add .markdown-guard-verified
+          git commit -m "ci: mark markdown guard verified"
           git push
 
   build:
