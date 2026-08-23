@@ -1,82 +1,82 @@
-result=raw-html-not-rejected
+result=verified
 
-[2m00:31:40[22m   [34m├─[39m [2m/projects/factory-tycoon/index.html[22m [2m(+2ms)[22m 
-[2m00:31:40[22m   [34m├─[39m [2m/projects/selfishell/index.html[22m [2m(+1ms)[22m 
-[2m00:31:40[22m   [34m├─[39m [2m/projects/index.html[22m [2m(+2ms)[22m 
-[2m00:31:40[22m   [34m├─[39m [2m/rss.xml[22m [2m(+30ms)[22m 
-[2m00:31:40[22m   [34m├─[39m [2m/index.html[22m [2m(+3ms)[22m 
-[2m00:31:40[22m [32m✓ Completed in 69ms.
+[2m00:33:05[22m [34m[build][39m Rearranging server assets...
+
+[42m[30m generating static routes [39m[49m
+[2m00:33:05[22m   [34m├─[39m [2m/404.html[22m [2m(+10ms)[22m 
+[2m00:33:05[22m   [34m├─[39m [2m/notes/keeping-zshrc-user-owned/index.html[22m [2m(+5ms)[22m 
+[2m00:33:05[22m   [34m├─[39m [2m/notes/redis-pubsub-for-websocket/index.html[22m [2m(+3ms)[22m 
+[2m00:33:05[22m   [34m├─[39m [2m/notes/index.html[22m [2m(+2ms)[22m 
+[2m00:33:05[22m   [34m├─[39m [2m/projects/factory-tycoon/index.html[22m [2m(+3ms)[22m 
+[2m00:33:05[22m   [34m├─[39m [2m/projects/selfishell/index.html[22m [2m(+2ms)[22m 
+[2m00:33:05[22m   [34m├─[39m [2m/projects/index.html[22m [2m(+2ms)[22m 
+[2m00:33:05[22m   [34m├─[39m [2m/rss.xml[22m [2m(+28ms)[22m 
+[2m00:33:05[22m   [34m├─[39m [2m/index.html[22m [2m(+3ms)[22m 
+[2m00:33:05[22m [32m✓ Completed in 76ms.
 [39m
-[2m00:31:40[22m [34m[build][39m [32m✓ Completed in 265ms.[39m
-[2m00:31:40[22m [34m[@astrojs/sitemap][39m `sitemap-index.xml` created at `dist`
-[2m00:31:40[22m [34m[build][39m 8 page(s) built in [1m1.01s[22m
-[2m00:31:40[22m [34m[build][39m [1mComplete![22m
+[2m00:33:05[22m [34m[build][39m [32m✓ Completed in 509ms.[39m
+[2m00:33:05[22m [34m[@astrojs/sitemap][39m `sitemap-index.xml` created at `dist`
+[2m00:33:05[22m [34m[build][39m 8 page(s) built in [1m1.18s[22m
+[2m00:33:05[22m [34m[build][39m [1mComplete![22m
 
 > jiminu.github.io@0.0.1 build
 > astro build
 
-[2m00:31:41[22m [34m[content][39m Syncing content
-[2m00:31:41[22m [34m[content][39m Synced content
-[2m00:31:41[22m [34m[types][39m Generated [2m581ms[22m
-[2m00:31:41[22m [34m[build][39m output: [34m"static"[39m
-[2m00:31:41[22m [34m[build][39m mode: [34m"static"[39m
-[2m00:31:41[22m [34m[build][39m directory: [34m/home/runner/work/jiminu.github.io/jiminu.github.io/dist/[39m
-[2m00:31:41[22m [34m[build][39m Collecting build info...
-[2m00:31:41[22m [34m[build][39m [32m✓ Completed in 641ms.[39m
-[2m00:31:41[22m [34m[build][39m Building static entrypoints...
-[2m00:31:41[22m [34m[vite][39m [32m✓ built in 161ms[39m
-[2m00:31:41[22m [34m[vite][39m [32m✓ built in 15ms[39m
-[2m00:31:41[22m [34m[build][39m Rearranging server assets...
+[2m00:33:07[22m [34m[content][39m Syncing content
+[2m00:33:07[22m [34m[content][39m Synced content
+[2m00:33:07[22m [34m[types][39m Generated [2m507ms[22m
+[2m00:33:07[22m [34m[build][39m output: [34m"static"[39m
+[2m00:33:07[22m [34m[build][39m mode: [34m"static"[39m
+[2m00:33:07[22m [34m[build][39m directory: [34m/home/runner/work/jiminu.github.io/jiminu.github.io/dist/[39m
+[2m00:33:07[22m [34m[build][39m Collecting build info...
+[2m00:33:07[22m [34m[build][39m [32m✓ Completed in 567ms.[39m
+[2m00:33:07[22m [34m[build][39m Building static entrypoints...
+[2m00:33:07[22m [34m[vite][39m [32m✓ built in 435ms[39m
+[2m00:33:07[22m [34m[vite][39m [32m✓ built in 21ms[39m
+[2m00:33:07[22m [34m[build][39m Rearranging server assets...
 
 [42m[30m generating static routes [39m[49m
-[2m00:31:41[22m   [34m├─[39m [2m/404.html[22m [2m(+8ms)[22m 
-[2m00:31:41[22m   [34m├─[39m [2m/notes/__markdown-guard-test/index.html[22m [2m(+2ms)[22m 
-[2m00:31:41[22m   [34m├─[39m [2m/notes/keeping-zshrc-user-owned/index.html[22m [2m(+1ms)[22m 
-[2m00:31:41[22m   [34m├─[39m [2m/notes/redis-pubsub-for-websocket/index.html[22m [2m(+1ms)[22m 
-[2m00:31:41[22m   [34m├─[39m [2m/notes/index.html[22m [2m(+2ms)[22m 
-[2m00:31:41[22m   [34m├─[39m [2m/projects/factory-tycoon/index.html[22m [2m(+2ms)[22m 
-[2m00:31:41[22m   [34m├─[39m [2m/projects/selfishell/index.html[22m [2m(+1ms)[22m 
-[2m00:31:41[22m   [34m├─[39m [2m/projects/index.html[22m [2m(+2ms)[22m 
-[2m00:31:41[22m   [34m├─[39m [2m/rss.xml[22m [2m(+24ms)[22m 
-[2m00:31:41[22m   [34m├─[39m [2m/index.html[22m [2m(+2ms)[22m 
-[2m00:31:41[22m [32m✓ Completed in 64ms.
+[2m00:33:07[22m   [34m├─[39m [2m/404.html[22m [2m(+9ms)[22m 
+[2m00:33:07[22m   [34m├─[39m [2m/notes/__markdown-guard-test/index.html[22m [2m(+5ms)[22m 
+[2m00:33:07[22m   [34m├─[39m [2m/notes/keeping-zshrc-user-owned/index.html[22m [2m(+3ms)[22m 
+[2m00:33:07[22m   [34m├─[39m [2m/notes/redis-pubsub-for-websocket/index.html[22m [2m(+2ms)[22m 
+[2m00:33:07[22m   [34m├─[39m [2m/notes/index.html[22m [2m(+2ms)[22m 
+[2m00:33:07[22m   [34m├─[39m [2m/projects/factory-tycoon/index.html[22m [2m(+3ms)[22m 
+[2m00:33:07[22m   [34m├─[39m [2m/projects/selfishell/index.html[22m [2m(+2ms)[22m 
+[2m00:33:07[22m   [34m├─[39m [2m/projects/index.html[22m [2m(+2ms)[22m 
+[2m00:33:07[22m   [34m├─[39m [2m/rss.xml[22m [2m(+28ms)[22m 
+[2m00:33:07[22m   [34m├─[39m [2m/index.html[22m [2m(+3ms)[22m 
+[2m00:33:07[22m [32m✓ Completed in 78ms.
 [39m
-[2m00:31:41[22m [34m[build][39m [32m✓ Completed in 273ms.[39m
-[2m00:31:41[22m [34m[@astrojs/sitemap][39m `sitemap-index.xml` created at `dist`
-[2m00:31:41[22m [34m[build][39m 9 page(s) built in [1m924ms[22m
-[2m00:31:41[22m [34m[build][39m [1mComplete![22m
+[2m00:33:07[22m [34m[build][39m [32m✓ Completed in 570ms.[39m
+[2m00:33:08[22m [34m[@astrojs/sitemap][39m `sitemap-index.xml` created at `dist`
+[2m00:33:08[22m [34m[build][39m 9 page(s) built in [1m1.15s[22m
+[2m00:33:08[22m [34m[build][39m [1mComplete![22m
 
 > jiminu.github.io@0.0.1 build
 > astro build
 
-[2m00:31:43[22m [34m[content][39m Syncing content
-[31m[1m00:31:43[22m [ERROR] [glob-loader][39m Error rendering __markdown-guard-test.md: Raw HTML is not allowed in Markdown. Use Markdown syntax instead.
-[2m00:31:43[22m [34m[content][39m Synced content
-[2m00:31:43[22m [34m[types][39m Generated [2m650ms[22m
-[2m00:31:43[22m [34m[build][39m output: [34m"static"[39m
-[2m00:31:43[22m [34m[build][39m mode: [34m"static"[39m
-[2m00:31:43[22m [34m[build][39m directory: [34m/home/runner/work/jiminu.github.io/jiminu.github.io/dist/[39m
-[2m00:31:43[22m [34m[build][39m Collecting build info...
-[2m00:31:43[22m [34m[build][39m [32m✓ Completed in 705ms.[39m
-[2m00:31:43[22m [34m[build][39m Building static entrypoints...
-[2m00:31:43[22m [34m[vite][39m [32m✓ built in 167ms[39m
-[2m00:31:43[22m [34m[vite][39m [32m✓ built in 47ms[39m
-[2m00:31:43[22m [34m[build][39m Rearranging server assets...
-
-[42m[30m generating static routes [39m[49m
-[2m00:31:43[22m   [34m├─[39m [2m/404.html[22m [2m(+8ms)[22m 
-[2m00:31:43[22m   [34m├─[39m [2m/notes/__markdown-guard-test/index.html[22m [2m(+3ms)[22m 
-[2m00:31:43[22m   [34m├─[39m [2m/notes/keeping-zshrc-user-owned/index.html[22m [2m(+2ms)[22m 
-[2m00:31:43[22m   [34m├─[39m [2m/notes/redis-pubsub-for-websocket/index.html[22m [2m(+1ms)[22m 
-[2m00:31:43[22m   [34m├─[39m [2m/notes/index.html[22m [2m(+2ms)[22m 
-[2m00:31:43[22m   [34m├─[39m [2m/projects/factory-tycoon/index.html[22m [2m(+2ms)[22m 
-[2m00:31:43[22m   [34m├─[39m [2m/projects/selfishell/index.html[22m [2m(+1ms)[22m 
-[2m00:31:43[22m   [34m├─[39m [2m/projects/index.html[22m [2m(+2ms)[22m 
-[2m00:31:43[22m   [34m├─[39m [2m/rss.xml[22m [2m(+25ms)[22m 
-[2m00:31:43[22m   [34m├─[39m [2m/index.html[22m [2m(+2ms)[22m 
-[2m00:31:43[22m [32m✓ Completed in 66ms.
-[39m
-[2m00:31:43[22m [34m[build][39m [32m✓ Completed in 311ms.[39m
-[2m00:31:43[22m [34m[@astrojs/sitemap][39m `sitemap-index.xml` created at `dist`
-[2m00:31:43[22m [34m[build][39m 9 page(s) built in [1m1.03s[22m
-[2m00:31:43[22m [34m[build][39m [1mComplete![22m
+[2m00:33:09[22m [34m[content][39m Syncing content
+[2m00:33:09[22m [34m[content][39m Synced content
+[2m00:33:09[22m [34m[types][39m Generated [2m520ms[22m
+[2m00:33:09[22m [34m[build][39m output: [34m"static"[39m
+[2m00:33:09[22m [34m[build][39m mode: [34m"static"[39m
+[2m00:33:09[22m [34m[build][39m directory: [34m/home/runner/work/jiminu.github.io/jiminu.github.io/dist/[39m
+[2m00:33:09[22m [34m[build][39m Collecting build info...
+[2m00:33:09[22m [34m[build][39m [32m✓ Completed in 605ms.[39m
+[2m00:33:09[22m [34m[build][39m Building static entrypoints...
+[31m[1m00:33:09[22m [ERROR] [vite][39m [31m✗[39m Build failed in 302ms
+Raw HTML is not allowed in Markdown. Use Markdown syntax instead.
+  [1mLocation:[22m
+    [4m/home/runner/work/jiminu.github.io/jiminu.github.io/node_modules/satteri/dist/mdast/mdast-visitor.js:709:36[24m
+  [1mStack trace:[22m
+[2m    at Object.html (file:///home/runner/work/jiminu.github.io/jiminu.github.io/astro.config.mjs?t=1787445188755:9:11)
+    at file:///home/runner/work/jiminu.github.io/jiminu.github.io/node_modules/satteri/dist/compile.js:151:59
+    at runPlugin (file:///home/runner/work/jiminu.github.io/jiminu.github.io/node_modules/satteri/dist/compile.js:152:16)
+    at runMdastPluginsOnHandle (file:///home/runner/work/jiminu.github.io/jiminu.github.io/node_modules/satteri/dist/compile.js:171:12)
+    at Module.markdownToHtml (file:///home/runner/work/jiminu.github.io/jiminu.github.io/node_modules/satteri/dist/compile.js:331:20)
+    at aggregateBindingErrorsIntoJsError (file:///home/runner/work/jiminu.github.io/jiminu.github.io/node_modules/rolldown/dist/shared/error-NcRuXAVN.mjs:48:18)
+    at #build (file:///home/runner/work/jiminu.github.io/jiminu.github.io/node_modules/rolldown/dist/shared/rolldown-vcii7mEa.mjs:132:34)
+    at async Object.build (file:///home/runner/work/jiminu.github.io/jiminu.github.io/node_modules/vite/dist/node/chunks/node.js:34242:19)
+    at async Object.buildApp (file:///home/runner/work/jiminu.github.io/jiminu.github.io/node_modules/vite/dist/node/chunks/node.js:34234:6)
+    at async viteBuild (file:///home/runner/work/jiminu.github.io/jiminu.github.io/node_modules/astro/dist/core/build/static-build.js:68:3)[22m
