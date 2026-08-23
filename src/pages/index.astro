@@ -24,7 +24,7 @@ const notes = (await getCollection('notes', ({ data }) => !data.draft))
     {projects.length === 0 ? (
       <p class="empty">아직 공개한 프로젝트가 없습니다.</p>
     ) : (
-      <ul class="entry-list">
+      <ul class="entry-list project-list">
         {projects.map((project) => (
           <li class:list={{ 'has-thumbnail': project.data.thumbnail }}>
             <div>
@@ -61,7 +61,7 @@ const notes = (await getCollection('notes', ({ data }) => !data.draft))
     {notes.length === 0 ? (
       <p class="empty">아직 작성한 글이 없습니다.</p>
     ) : (
-      <ul class="entry-list">
+      <ul class="entry-list note-list">
         {notes.map((note) => (
           <li>
             <time datetime={note.data.date.toISOString()}>
@@ -75,3 +75,26 @@ const notes = (await getCollection('notes', ({ data }) => !data.draft))
     )}
   </section>
 </BaseLayout>
+
+<style>
+  .projects-section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .notes-section {
+    margin-top: 4.5rem;
+  }
+
+  .notes-section h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .note-list li {
+    padding-block: 0.75rem;
+  }
+</style>
