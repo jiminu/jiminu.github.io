@@ -3,6 +3,7 @@ title: "Redis Streams에서 Pub/Sub으로 바꾼 이유"
 description: "WebSocket 실시간 전달 경로에 필요한 보장 수준을 다시 정리한 기록"
 date: 2026-01-06
 draft: false
+project: factory-tycoon
 ---
 
 [관련 코드](https://github.com/factorytycoon/factory-tycoon-backend-websocket)
