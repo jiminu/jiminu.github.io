@@ -1,7 +1,7 @@
 ---
 title: "Selfishell"
 description: "macOS, Ubuntu, WSL에서 같은 개발 환경을 유지하기 위한 관리형 Zsh 도구"
-date: 2026-08-19
+date: 2026-07-14
 draft: false
 thumbnail: "/images/selfishell/shell.png"
 ---
@@ -37,4 +37,4 @@ Selfishell이 관리하는 설정과 사용자가 직접 작성하는 설정을 
 
 플랫폼 판별, 설치, 프로필, 업데이트와 릴리스 과정을 스크립트 테스트로 확인한다. 실제 설치 흐름은 컨테이너 기반 테스트로 별도 검증하고, 셸 시작 성능 측정은 임시 HOME에서 실행해 사용자의 현재 환경과 분리한다.
 
-현재 v1.2.5를 공개했으며 macOS의 Apple Silicon과 Intel, Ubuntu/WSL의 AMD64와 ARM64를 지원한다.
+macOS의 Apple Silicon과 Intel, Ubuntu/WSL의 AMD64와 ARM64를 지원한다.
