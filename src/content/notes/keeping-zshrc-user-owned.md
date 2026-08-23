@@ -3,6 +3,7 @@ title: "설정 관리 도구가 사용자의 .zshrc를 소유하지 않게 만�
 description: "관리 설정을 배포하면서도 개인 셸 설정과 파일 권한을 보존한 구조"
 date: 2026-08-22
 draft: false
+project: selfishell
 ---
 
 [관련 코드](https://github.com/jiminu/selfishell)

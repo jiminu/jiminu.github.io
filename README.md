@@ -42,12 +42,13 @@ title: "글 제목"
 description: "글을 한 문장으로 설명합니다."
 date: 2026-08-21
 draft: false
+project: selfishell # (선택) 연관된 프로젝트 ID
 ---
 
 내용을 작성합니다.
 ```
 
-`draft: true`인 항목은 목록과 상세 페이지에 공개되지 않습니다.
+`draft: true`인 항목은 목록과 상세 페이지에 공개되지 않습니다. `project` 필드에 프로젝트 ID(파일명)를 지정하면 해당 프로젝트와 글이 양방향으로 자동 연결됩니다.
 
 ## 배포
 

@@ -1,4 +1,5 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 
 interface Props {
@@ -6,9 +7,19 @@ interface Props {
   description: string;
   date: Date;
   image?: string;
+  relatedNotes?: CollectionEntry<'notes'>[];
+  relatedProject?: CollectionEntry<'projects'>;
 }
 
-const { title, description, date, image } = Astro.props;
+const {
+  title,
+  description,
+  date,
+  image,
+  relatedNotes = [],
+  relatedProject,
+} = Astro.props;
+
 const formattedDate = date.toISOString().slice(0, 10);
 const isProject = Astro.url.pathname.startsWith('/projects');
 const backLink = isProject ? '/projects/' : '/notes/';
@@ -25,6 +36,29 @@ const backText = isProject ? '← Projects 목록' : '← Notes 목록';
     <div class="entry-body">
       <slot />
     </div>
+    {relatedNotes.length > 0 && (
+      <section class="related-section">
+        <h2>관련 노트</h2>
+        <ul class="note-list">
+          {relatedNotes.map((note) => (
+            <li>
+              <time datetime={note.data.date.toISOString()}>
+                {note.data.date.toISOString().slice(0, 10)}
+              </time>
+              <a href={`/notes/${note.id}/`}>{note.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+    {relatedProject && (
+      <section class="related-section">
+        <p class="related-project">
+          <span>소속 프로젝트:</span>
+          <a href={`/projects/${relatedProject.id}/`}>{relatedProject.data.title} →</a>
+        </p>
+      </section>
+    )}
     <footer class="entry-footer">
       <a href={backLink}>{backText}</a>
     </footer>

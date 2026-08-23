@@ -4,18 +4,26 @@ import EntryLayout from '../../layouts/EntryLayout.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects', ({ data }) => !data.draft);
+  const allNotes = await getCollection('notes', ({ data }) => !data.draft);
 
-  return projects.map((entry) => ({
-    params: { id: entry.id },
-    props: { entry },
-  }));
+  return projects.map((entry) => {
+    const relatedNotes = allNotes
+      .filter((note) => note.data.project?.id === entry.id)
+      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+    return {
+      params: { id: entry.id },
+      props: { entry, relatedNotes },
+    };
+  });
 }
 
 interface Props {
   entry: CollectionEntry<'projects'>;
+  relatedNotes: CollectionEntry<'notes'>[];
 }
 
-const { entry } = Astro.props;
+const { entry, relatedNotes } = Astro.props;
 const { Content } = await render(entry);
 ---
 
@@ -24,6 +32,7 @@ const { Content } = await render(entry);
   description={entry.data.description}
   date={entry.data.date}
   image={entry.data.thumbnail}
+  relatedNotes={relatedNotes}
 >
   <Content />
 </EntryLayout>
