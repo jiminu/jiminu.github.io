@@ -6,9 +6,9 @@ draft: false
 thumbnail: "/images/voronoi-diagram/overview.png"
 ---
 
-보로노이 다이어그램(Voronoi Diagram)은 2차원 평면 위의 시드 점(Generator Points) 집합이 주어졌을 때, 각 점에서 가장 가까운 영역들로 평면을 분할하는 기하학적 구조다. 들로네 삼각분할, 최소 신장 트리(MST), 볼록 껍질(Convex Hull), 최근접 점 쌍 탐색 등 다양한 기하 문제를 해결하는 핵심 기반으로 활용된다.
+보로노이 다이어그램(Voronoi Diagram)은 2차원 평면 위의 **시드 점**(Generator Points) 집합이 주어졌을 때, 각 점에서 가장 가까운 영역들로 평면을 분할하는 기하학적 구조다. 들로네 삼각분할, 최소 신장 트리(MST), 볼록 껍질(Convex Hull), 최근접 점 쌍 탐색 등 다양한 기하 문제를 해결하는 핵심 기반으로 활용된다.
 
-이 프로젝트에서는 점, 간선, 면의 위상학적 인접 관계를 상수 시간 $O(1)$에 탐색할 수 있는 **Winged-Edge 자료구조**를 설계하고, C++로 2차원 보로노이 다이어그램 생성 및 Bounding Edge 순회 알고리즘을 구현했다.
+이 프로젝트에서는 점, 간선, 면의 위상학적 인접 관계를 상수 시간 $O(1)$에 탐색할 수 있는 **Winged-Edge** 자료구조를 설계하고, C++로 2차원 보로노이 다이어그램 생성 및 Bounding Edge 순회 알고리즘을 구현했다.
 
 ![1000개 점에 대한 2차원 보로노이 다이어그램 생성 결과](/images/voronoi-diagram/overview.png)
 
