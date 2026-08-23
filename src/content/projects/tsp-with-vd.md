@@ -3,6 +3,7 @@ title: "외판원 문제를 위한 보로노이 기반 발견적 해법"
 description: "보로노이 다이어그램과 들로네 삼각분할을 활용한 대규모 TSP 근사 최적화"
 date: 2022-06-27
 draft: false
+thumbnail: "/images/tsp-with-vd/overview.png"
 ---
 
 [GitHub에서 보기](https://github.com/jiminu/tsp-with-vd)
@@ -11,11 +12,15 @@ draft: false
 
 이 프로젝트에서는 보로노이 다이어그램(Voronoi Diagram)의 쌍대 그래프인 들로네 삼각분할(Delaunay Triangulation)의 기하학적 성질을 활용해 탐색 공간을 줄이고, 1.5배 및 2배 보장 근사 알고리즘과 유전 알고리즘을 결합한 발견적 해법을 구현하고 학회에 발표했다.
 
+![TSPLIB 벤치마크 데이터셋의 순회 경로 시각화](/images/tsp-with-vd/overview.png)
+
 ## 완전 그래프의 간선 수를 기하 구조로 축소했다
 
 2차원 평면의 $n$개 도시 사이의 모든 연결을 고려하면 완전 그래프(Complete Graph)의 간선 수는 $\frac{n(n-1)}{2}$개로 $O(n^2)$에 달한다. 도시가 수만 개 단위로 커지면 간선 정보만으로도 메모리와 연산량에 큰 부담이 된다.
 
 들로네 삼각분할 그래프는 유클리드 평면의 최소 신장 트리(Minimum Spanning Tree, MST)를 항상 포함한다는 중요한 기하학적 성질을 갖는다. 들로네 삼각분할을 사용하면 간선 수를 $3n - 3 - k$개($k$는 Convex Hull 점 개수)로 대폭 줄여 $O(n)$ 수준으로 유지하면서도, 최적 순회 경로를 구성하는 핵심 간선들을 보존할 수 있다.
+
+![보로노이 다이어그램과 들로네 삼각분할](/images/tsp-with-vd/delaunay.png)
 
 ## 2-Approximation과 1.5-Approximation 근사 파이프라인
 
@@ -32,6 +37,8 @@ draft: false
 2. 이 정점들 사이의 최소 가중치 완전 매칭(Minimum Weight Perfect Matching)을 구한다.
 3. MST와 매칭 간선을 결합해 오일러 회로를 만든 뒤 해밀턴 회로로 변환한다.
 - 이론상 최적해의 1.5배 이내 경로 길이를 보장한다.
+
+![근사 알고리즘으로 생성된 해밀턴 순회 경로](/images/tsp-with-vd/circuit.png)
 
 ## 유전 알고리즘(GA)의 초기해로 결합
 
