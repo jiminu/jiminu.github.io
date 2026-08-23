@@ -22,9 +22,14 @@ body {
 }
 
 a {
-  color: var(--link);
+  color: var(--text);
+  text-decoration: none;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 a:focus-visible {
@@ -54,9 +59,7 @@ a:focus-visible {
 }
 
 .site-name {
-  color: var(--text);
   font-weight: 700;
-  text-decoration: none;
 }
 
 nav {
@@ -192,6 +195,11 @@ time,
 .entry-body {
   padding-top: 2rem;
   overflow-wrap: break-word;
+}
+
+.entry-body a {
+  color: var(--link);
+  text-decoration: underline;
 }
 
 .entry-body pre {
