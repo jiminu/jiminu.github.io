@@ -19,11 +19,8 @@ const notes = (await getCollection('notes', ({ data }) => !data.draft))
     <p>개인 프로젝트와 기술 기록.</p>
   </section>
 
-  <section>
-    <header class="section-heading">
-      <h2>Projects</h2>
-      <p>구현한 프로젝트와 결과</p>
-    </header>
+  <section class="projects-section">
+    <h2>Projects</h2>
     {projects.length === 0 ? (
       <p class="empty">아직 공개한 프로젝트가 없습니다.</p>
     ) : (
@@ -59,11 +56,8 @@ const notes = (await getCollection('notes', ({ data }) => !data.draft))
     )}
   </section>
 
-  <section>
-    <header class="section-heading">
-      <h2>Notes</h2>
-      <p>기술 선택과 문제 해결 기록</p>
-    </header>
+  <section class="notes-section">
+    <h2>Notes</h2>
     {notes.length === 0 ? (
       <p class="empty">아직 작성한 글이 없습니다.</p>
     ) : (
