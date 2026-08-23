@@ -151,6 +151,12 @@ time,
   margin: 0.25rem 0 0;
 }
 
+.entry,
+.entry-body {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .entry > header {
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--border);
@@ -158,9 +164,11 @@ time,
 
 .entry-body {
   padding-top: 2rem;
+  overflow-wrap: break-word;
 }
 
 .entry-body pre {
+  max-width: 100%;
   overflow-x: auto;
   padding: 1rem;
   border: 1px solid var(--border);
