@@ -100,6 +100,20 @@ p {
   margin-bottom: 4rem;
 }
 
+.section-heading {
+  margin: 3rem 0 1rem;
+}
+
+.section-heading h2 {
+  margin: 0 0 0.25rem;
+}
+
+.section-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
 .intro p,
 .empty,
 time,
