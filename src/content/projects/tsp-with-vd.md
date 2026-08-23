@@ -6,8 +6,6 @@ draft: false
 thumbnail: "/images/tsp-with-vd/overview.png"
 ---
 
-[GitHub에서 보기](https://github.com/jiminu/tsp-with-vd)
-
 외판원 순회 문제(Traveling Salesperson Problem, TSP)는 모든 도시를 한 번씩 방문하고 출발점으로 돌아오는 최단 경로를 찾는 대표적인 NP-hard 문제다. 도시 수가 늘어날수록 탐색 공간이 기하급수적으로 커지므로, 현실적인 시간 안에 좋은 해를 구하기 위해서는 근사 알고리즘과 휴리스틱 탐색이 필수적이다.
 
 이 프로젝트에서는 보로노이 다이어그램(Voronoi Diagram)의 쌍대 그래프인 들로네 삼각분할(Delaunay Triangulation)의 기하학적 성질을 활용해 탐색 공간을 줄이고, 1.5배 및 2배 보장 근사 알고리즘과 유전 알고리즘을 결합한 발견적 해법을 구현하고 학회에 발표했다.
