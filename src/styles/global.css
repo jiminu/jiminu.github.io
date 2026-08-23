@@ -181,6 +181,24 @@ time,
   font-weight: 500;
 }
 
+.section-more {
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.section-more a {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.section-more a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
 .entry,
 .entry-body {
   min-width: 0;
