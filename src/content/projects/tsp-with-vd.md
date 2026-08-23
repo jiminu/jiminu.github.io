@@ -6,17 +6,17 @@ draft: false
 thumbnail: "/images/tsp-with-vd/overview.png"
 ---
 
-외판원 순회 문제(Traveling Salesperson Problem, TSP)는 모든 도시를 한 번씩 방문하고 출발점으로 돌아오는 최단 경로를 찾는 대표적인 NP-hard 문제다. 도시 수가 늘어날수록 탐색 공간이 기하급수적으로 커지므로, 현실적인 시간 안에 좋은 해를 구하기 위해서는 근사 알고리즘과 휴리스틱 탐색이 필수적이다.
+**외판원 순회 문제**(Traveling Salesperson Problem, TSP)는 모든 도시를 한 번씩 방문하고 출발점으로 돌아오는 최단 경로를 찾는 대표적인 NP-hard 문제다. 도시 수가 늘어날수록 탐색 공간이 기하급수적으로 커지므로, 현실적인 시간 안에 좋은 해를 구하기 위해서는 근사 알고리즘과 휴리스틱 탐색이 필수적이다.
 
-이 프로젝트에서는 보로노이 다이어그램(Voronoi Diagram)의 쌍대 그래프인 들로네 삼각분할(Delaunay Triangulation)의 기하학적 성질을 활용해 탐색 공간을 줄이고, 1.5배 및 2배 보장 근사 알고리즘과 유전 알고리즘을 결합한 발견적 해법을 구현하고 학회에 발표했다.
+이 프로젝트에서는 **보로노이 다이어그램**(Voronoi Diagram)의 쌍대 그래프인 **들로네 삼각분할**(Delaunay Triangulation)의 기하학적 성질을 활용해 탐색 공간을 줄이고, 1.5배 및 2배 보장 근사 알고리즘과 유전 알고리즘을 결합한 발견적 해법을 구현하고 학회에 발표했다.
 
 ![TSPLIB 벤치마크 데이터셋의 순회 경로 시각화](/images/tsp-with-vd/overview.png)
 
 ## 완전 그래프의 간선 수를 기하 구조로 축소했다
 
-2차원 평면의 $n$개 도시 사이의 모든 연결을 고려하면 완전 그래프(Complete Graph)의 간선 수는 $\frac{n(n-1)}{2}$개로 $O(n^2)$에 달한다. 도시가 수만 개 단위로 커지면 간선 정보만으로도 메모리와 연산량에 큰 부담이 된다.
+2차원 평면의 $n$개 도시 사이의 모든 연결을 고려하면 **완전 그래프**(Complete Graph)의 간선 수는 $\frac{n(n-1)}{2}$개로 $O(n^2)$에 달한다. 도시가 수만 개 단위로 커지면 간선 정보만으로도 메모리와 연산량에 큰 부담이 된다.
 
-들로네 삼각분할 그래프는 유클리드 평면의 최소 신장 트리(Minimum Spanning Tree, MST)를 항상 포함한다는 중요한 기하학적 성질을 갖는다. 들로네 삼각분할을 사용하면 간선 수를 $3n - 3 - k$개($k$는 Convex Hull 점 개수)로 대폭 줄여 $O(n)$ 수준으로 유지하면서도, 최적 순회 경로를 구성하는 핵심 간선들을 보존할 수 있다.
+들로네 삼각분할 그래프는 유클리드 평면의 **최소 신장 트리**(Minimum Spanning Tree, MST)를 항상 포함한다는 중요한 기하학적 성질을 갖는다. 들로네 삼각분할을 사용하면 간선 수를 $3n - 3 - k$개($k$는 Convex Hull 점 개수)로 대폭 줄여 $O(n)$ 수준으로 유지하면서도, 최적 순회 경로를 구성하는 핵심 간선들을 보존할 수 있다.
 
 ![보로노이 다이어그램과 들로네 삼각분할](/images/tsp-with-vd/delaunay.png)
 
@@ -26,13 +26,13 @@ thumbnail: "/images/tsp-with-vd/overview.png"
 
 ### 1. 2-Approximation 알고리즘
 1. 들로네 삼각분할에서 최소 신장 트리(MST)를 구한다.
-2. 트리의 간선을 두 번씩 순회하여 오일러 회로(Euler Circuit)를 만든다.
-3. 이미 방문한 정점을 건너뛰는(Shortcut) 방식으로 해밀턴 회로(Hamiltonian Circuit)를 구성한다.
+2. 트리의 간선을 두 번씩 순회하여 **오일러 회로**(Euler Circuit)를 만든다.
+3. 이미 방문한 정점을 건너뛰는(Shortcut) 방식으로 **해밀턴 회로**(Hamiltonian Circuit)를 구성한다.
 - 삼각 부등식을 만족하는 평면에서 이론상 최적해의 2배 이내 경로 길이를 보장한다.
 
 ### 2. 1.5-Approximation 알고리즘 (Christofides)
-1. 들로네 기반 MST에서 차수가 홀수인 정점(Odd Degree Vertices)을 추출한다.
-2. 이 정점들 사이의 최소 가중치 완전 매칭(Minimum Weight Perfect Matching)을 구한다.
+1. 들로네 기반 MST에서 **홀수 차수 정점**(Odd Degree Vertices)을 추출한다.
+2. 이 정점들 사이의 **최소 가중치 완전 매칭**(Minimum Weight Perfect Matching)을 구한다.
 3. MST와 매칭 간선을 결합해 오일러 회로를 만든 뒤 해밀턴 회로로 변환한다.
 - 이론상 최적해의 1.5배 이내 경로 길이를 보장한다.
 
