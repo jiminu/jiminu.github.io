@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, chore/disallow-raw-html]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,100 +11,7 @@ permissions:
   id-token: write
 
 jobs:
-  verify-markdown:
-    if: github.ref == 'refs/heads/chore/disallow-raw-html'
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-      - name: Synchronize lockfile
-        id: lock
-        run: |
-          npm install --package-lock-only --ignore-scripts
-          if git diff --quiet -- package-lock.json; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Commit synchronized lockfile
-        if: steps.lock.outputs.changed == 'true'
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add package-lock.json
-          git commit -m "chore: sync package lock"
-          git push
-      - name: Verify Markdown guard
-        if: steps.lock.outputs.changed == 'false'
-        run: |
-          set +e
-          : > /tmp/verify.log
-          result=verified
-
-          npm ci >> /tmp/verify.log 2>&1
-          if [ $? -ne 0 ]; then
-            result=install-failed
-          fi
-
-          if [ "$result" = verified ]; then
-            npm run build >> /tmp/verify.log 2>&1
-            if [ $? -ne 0 ]; then
-              result=existing-build-failed
-            fi
-          fi
-
-          if [ "$result" = verified ]; then
-            cat > src/content/notes/__markdown-guard-test.md <<'EOF'
-          ---
-          title: "Markdown guard test"
-          description: "Temporary validation fixture"
-          date: 2026-08-23
-          draft: false
-          ---
-
-          ```html
-          <div>This is displayed as code.</div>
-          ```
-          EOF
-            npm run build >> /tmp/verify.log 2>&1
-            if [ $? -ne 0 ]; then
-              result=fenced-code-build-failed
-            fi
-          fi
-
-          if [ "$result" = verified ]; then
-            printf '\n<div>This must fail the build.</div>\n' >> src/content/notes/__markdown-guard-test.md
-            npm run build >> /tmp/verify.log 2>&1
-            if [ $? -eq 0 ]; then
-              result=raw-html-not-rejected
-            fi
-          fi
-
-          {
-            echo "result=$result"
-            echo
-            tail -80 /tmp/verify.log
-          } > .markdown-guard-result
-
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add .markdown-guard-result
-          if ! git diff --cached --quiet; then
-            git commit -m "ci: record markdown guard result"
-            git push
-          fi
-
-          [ "$result" = verified ]
-
   build:
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -113,7 +20,6 @@ jobs:
         uses: withastro/action@v6
 
   deploy:
-    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     environment:
