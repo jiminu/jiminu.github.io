@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, chore/disallow-raw-html]
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,61 @@ permissions:
   id-token: write
 
 jobs:
+  verify-markdown:
+    if: github.ref == 'refs/heads/chore/disallow-raw-html'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Synchronize lockfile
+        run: npm install --package-lock-only --ignore-scripts
+      - name: Install dependencies
+        run: npm ci
+      - name: Build existing content
+        run: npm run build
+      - name: Verify fenced HTML remains valid Markdown
+        run: |
+          cat > src/content/notes/__markdown-guard-test.md <<'EOF'
+          ---
+          title: "Markdown guard test"
+          description: "Temporary validation fixture"
+          date: 2026-08-23
+          draft: false
+          ---
+
+          ```html
+          <div>This is displayed as code.</div>
+          ```
+          EOF
+          npm run build
+      - name: Verify raw HTML is rejected
+        run: |
+          printf '\n<div>This must fail the build.</div>\n' >> src/content/notes/__markdown-guard-test.md
+          if npm run build; then
+            echo "Expected raw HTML validation to fail."
+            exit 1
+          fi
+          rm src/content/notes/__markdown-guard-test.md
+      - name: Commit synchronized lockfile
+        run: |
+          if git diff --quiet -- package-lock.json; then
+            exit 0
+          fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add package-lock.json
+          git commit -m "chore: sync package lock"
+          git push
+
   build:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,6 +74,7 @@ jobs:
         uses: withastro/action@v6
 
   deploy:
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     environment:
