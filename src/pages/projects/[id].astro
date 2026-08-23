@@ -7,9 +7,8 @@ export async function getStaticPaths() {
   const allNotes = await getCollection('notes', ({ data }) => !data.draft);
 
   return projects.map((entry) => {
-    const relatedNotes = (entry.data.notes ?? [])
-      .map((noteId) => allNotes.find((n) => n.id === noteId))
-      .filter((n): n is CollectionEntry<'notes'> => Boolean(n))
+    const relatedNotes = allNotes
+      .filter((note) => note.data.project?.id === entry.id)
       .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
     return {

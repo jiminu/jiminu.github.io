@@ -1,21 +1,24 @@
 ---
-import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { getCollection, getEntry, render, type CollectionEntry } from 'astro:content';
 import EntryLayout from '../../layouts/EntryLayout.astro';
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes', ({ data }) => !data.draft);
-  const allProjects = await getCollection('projects', ({ data }) => !data.draft);
 
-  return notes.map((entry) => {
-    const relatedProject = allProjects.find((project) =>
-      project.data.notes?.includes(entry.id)
-    );
+  return Promise.all(
+    notes.map(async (entry) => {
+      const project = entry.data.project
+        ? await getEntry(entry.data.project)
+        : undefined;
+      const relatedProject =
+        project && !project.data.draft ? project : undefined;
 
-    return {
-      params: { id: entry.id },
-      props: { entry, relatedProject },
-    };
-  });
+      return {
+        params: { id: entry.id },
+        props: { entry, relatedProject },
+      };
+    })
+  );
 }
 
 interface Props {
