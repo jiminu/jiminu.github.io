@@ -25,7 +25,7 @@ export const GET: APIRoute = async (context) => {
 
   return rss({
     title: 'jiminu',
-    description: '개인 프로젝트와 기술 기록.',
+    description: '개발 기록',
     site: context.site ?? 'https://jiminu.github.io',
     items,
     customData: '<language>ko</language>',
