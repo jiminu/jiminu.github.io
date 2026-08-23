@@ -181,6 +181,16 @@ time,
   font-weight: 500;
 }
 
+.section-more {
+  margin: 1.25rem 0 0;
+}
+
+.section-more a {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--link);
+}
+
 .entry,
 .entry-body {
   min-width: 0;
