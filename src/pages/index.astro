@@ -5,11 +5,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const byNewest = (a: { data: { date: Date } }, b: { data: { date: Date } }) =>
   b.data.date.valueOf() - a.data.date.valueOf();
 
-const allProjects = (await getCollection('projects', ({ data }) => !data.draft)).sort(byNewest);
-const projects = allProjects.slice(0, 5);
-
-const allNotes = (await getCollection('notes', ({ data }) => !data.draft)).sort(byNewest);
-const notes = allNotes.slice(0, 5);
+const projects = (await getCollection('projects', ({ data }) => !data.draft))
+  .sort(byNewest)
+  .slice(0, 5);
+const notes = (await getCollection('notes', ({ data }) => !data.draft))
+  .sort(byNewest)
+  .slice(0, 5);
 ---
 
 <BaseLayout>
@@ -53,7 +54,7 @@ const notes = allNotes.slice(0, 5);
           ))}
         </ul>
         <p class="section-more">
-          <a href="/projects/">모든 Projects 보기 →</a>
+          <a href="/projects/">Projects 전체 보기 →</a>
         </p>
       </>
     )}
@@ -76,7 +77,7 @@ const notes = allNotes.slice(0, 5);
           ))}
         </ul>
         <p class="section-more">
-          <a href="/notes/">모든 Notes 보기 →</a>
+          <a href="/notes/">Notes 전체 보기 →</a>
         </p>
       </>
     )}
