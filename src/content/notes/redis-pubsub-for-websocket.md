@@ -10,7 +10,7 @@ project: factory-tycoon
 
 Factory Tycoon에서는 센서 데이터 수집, 이상 감지, 브라우저 화면 갱신 등 다양한 데이터 전달 경로가 존재했다. 메시지 처리 추적과 유실 방지가 필요한 백엔드 처리 파이프라인에는 Redis Streams를 활용했지만, 접속 중인 사용자에게 실시간 상태를 브로드캐스트하는 WebSocket 경로에는 다른 접근이 필요했다.
 
-## WebSocket 전달에도 처음에는 Streams를 고려했다
+## WebSocket 경로에서 Streams 검토와 한계
 
 초기에는 일관성을 위해 WebSocket 서버도 Streams의 Consumer Group에 붙여 `XREADGROUP`으로 메시지를 읽고 `XACK`으로 처리하도록 구성했다.
 
@@ -34,7 +34,7 @@ Streams는 소비자가 잠시 중단돼도 미처리 메시지를 다시 읽을
 
 이 경로에서 Streams를 유지하면 접속자가 없을 때도 메시지 상태를 추적해야 하고, 재접속 시 과거의 찰나 데이터까지 불필요하게 쏟아져 들어오는 문제가 있었다.
 
-## 화면 전달 경로에는 단순한 Fan-out이 맞았다
+## Pub/Sub 기반 Fan-out 구조 전환
 
 WebSocket 경로에 필요한 것은 메시지 재처리가 아니라 가벼운 채널 구독과 fan-out이었다. 따라서 화면 전달 경로에서는 Consumer Group과 ACK 오버헤드를 제거하고 Redis Pub/Sub을 사용하도록 역할을 분리했다.
 
