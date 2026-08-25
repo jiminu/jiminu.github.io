@@ -6,7 +6,7 @@ draft: false
 thumbnail: "/images/three-filter/overview.png"
 ---
 
-저궤도(LEO) 우주물체 수가 증가하면서, 위성 간 충돌 위험 평가의 연산 비용이 병목이 된다.
+LEO 우주물체 수가 급증하면서, Conjunction Assessment 연산 비용이 병목이 된다.
 
 우주물체가 $N$개일 때 전체 쌍(All-vs-All) 충돌 검사는 $\binom{N}{2} \approx \frac{N^2}{2}$개의 조합을 계산해야 한다. 2만 개만 있어도 약 2.16억 회의 궤도 교차 계산이 발생한다.
 
@@ -33,7 +33,7 @@ Time Filter 단계에서 전파된 3차원 위치 데이터를 빠르게 검색�
 $$D_F = (2 \times v_{max} \times \Delta t) + D_{critical}$$
 
 - **kd-tree 공간 분할**: 3차원 좌표 데이터를 $X, Y, Z$ 축 기준으로 재귀 분할해 $O(\log N)$ 반경 탐색 트리를 구성했다.
-- **Bisection 최근접 시점 수렴**: $D_F$ 반경 내에 진입한 후보 쌍에 대해서만 이분법을 적용해 오차 0.001초 이하로 최근접 접근 시점(TCA)과 최단 거리($d_{min}$)를 정밀 계산했다.
+- **Bisection 최근접 시점 수렴**: $D_F$ 반경 내에 진입한 후보 쌍에 대해서만 Bisection Method를 적용해 오차 0.001초 이하로 TCA와 최단 거리($d_{min}$)를 정밀 계산했다.
 
 ![3차원 kd-tree 공간 분할 및 반경 탐색 구조](/images/three-filter/kdtree.png)
 
@@ -54,4 +54,4 @@ Space-Track의 TLE 궤도 데이터 20,800개(LEO)와 SGP4 궤도 전파기를 �
 샘플링 주기($\Delta t$)를 5초부터 60초까지 변화시키며 런타임과 메모리 사용량을 측정했다.
 
 - **최적 런타임 주기**: $\Delta t = 5\text{s} \sim 10\text{s}$ 구간에서 쿼리 타임이 가장 안정적이었다.
-- **100만 개($10^6$) 우주물체 예측**: 다항식 피팅(Polynomial Fitting) 모델 적용 시, 100만 개 환경에서는 약 550GB 메모리와 71시간의 All-vs-All 연산 시간이 소요될 것으로 추정된다.
+- **100만 개($10^6$) 우주물체 예측**: Polynomial Fitting 모델 적용 시, 100만 개 환경에서는 약 550GB 메모리와 71시간의 All-vs-All 연산 시간이 소요될 것으로 추정된다.

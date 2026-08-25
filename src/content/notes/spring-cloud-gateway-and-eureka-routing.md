@@ -14,7 +14,7 @@ MSA 환경에서 클라이언트가 개별 서비스 인스턴스의 IP/Port를 
 
 ## Eureka를 통한 인스턴스 등록과 디스커버리
 
-Eureka는 분산 환경에서 서비스 레지스트리 역할을 한다.
+Eureka는 분산 환경에서 Service Registry 역할을 한다.
 
 1. **자동 등록**: 마이크로서비스 부팅 시 `spring.application.name`, IP, Port를 Eureka Server에 등록한다.
 2. **Heartbeat**: 클라이언트는 30초 주기로 상태 신호를 전송해 생존 상태를 갱신한다.
@@ -34,7 +34,7 @@ eureka:
 
 Spring Cloud Gateway는 Spring WebFlux 및 Netty 기반의 비동기 논블로킹 방식으로 동작한다.
 
-Eureka에 등록된 서비스 이름을 기반으로 `lb://` 프로토콜을 설정하면 클라이언트 측 로드밸런싱이 동작한다.
+Eureka에 등록된 서비스 이름을 기반으로 `lb://` 프로토콜을 설정하면 Client-side Load Balancing이 동작한다.
 
 ```yaml
 # sc-gateway 라우팅 설정 예시
@@ -54,9 +54,9 @@ spring:
 
 클라이언트는 게이트웨이 엔드포인트로만 요청을 보내고, 게이트웨이가 Eureka 레지스트리를 조회해 살아있는 인스턴스로 요청을 프록시한다.
 
-## 필터 체인을 통한 공통 처리
+## Filter Chain을 통한 공통 처리
 
-Spring Cloud Gateway의 필터 체인으로 공통 관심사를 중앙화했다.
+Spring Cloud Gateway의 Filter Chain으로 공통 관심사를 중앙화했다.
 
 - **Pre Filter**: JWT 토큰 검증, 공통 인증 헤더(`X-User-Id`) 주입, 분산 추적용 Trace ID 발급
 - **Post Filter**: 응답 코드 및 요청 지연 시간 로깅, 보안 HTTP 헤더 추가
