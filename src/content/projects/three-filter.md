@@ -6,7 +6,7 @@ draft: false
 thumbnail: "/images/three-filter/overview.png"
 ---
 
-저궤도(LEO) 우주물체 수가 증가하면서, 위성 간 충돌 위험 평가(Conjunction Assessment)의 연산 비용이 병목이 된다.
+저궤도(LEO) 우주물체 수가 증가하면서, 위성 간 충돌 위험 평가의 연산 비용이 병목이 된다.
 
 우주물체가 $N$개일 때 전체 쌍(All-vs-All) 충돌 검사는 $\binom{N}{2} \approx \frac{N^2}{2}$개의 조합을 계산해야 한다. 2만 개만 있어도 약 2.16억 회의 궤도 교차 계산이 발생한다.
 
@@ -33,7 +33,7 @@ Time Filter 단계에서 전파된 3차원 위치 데이터를 빠르게 검색�
 $$D_F = (2 \times v_{max} \times \Delta t) + D_{critical}$$
 
 - **kd-tree 공간 분할**: 3차원 좌표 데이터를 $X, Y, Z$ 축 기준으로 재귀 분할해 $O(\log N)$ 반경 탐색 트리를 구성했다.
-- **Bisection 최근접 시점 수렴**: $D_F$ 반경 내에 진입한 후보 쌍에 대해서만 이분법(Bisection Method)을 적용해 오차 0.001초 이하로 최근접 접근 시점(TCA)과 최단 거리($d_{min}$)를 정밀 계산했다.
+- **Bisection 최근접 시점 수렴**: $D_F$ 반경 내에 진입한 후보 쌍에 대해서만 이분법을 적용해 오차 0.001초 이하로 최근접 접근 시점(TCA)과 최단 거리($d_{min}$)를 정밀 계산했다.
 
 ![3차원 kd-tree 공간 분할 및 반경 탐색 구조](/images/three-filter/kdtree.png)
 

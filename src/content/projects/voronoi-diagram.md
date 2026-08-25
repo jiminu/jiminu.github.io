@@ -28,4 +28,4 @@ Face의 `firstEdge`에서 시작해 Wing 포인터를 따라가면, Face를 둘�
 
 ![임의 Face의 Bounding Edges 순회 및 경계 폴리곤 탐색](/images/voronoi-diagram/bounding-edges.png)
 
-평면 외곽 영역은 무한히 뻗어나가는 Unbounded Edge를 갖는다. 가상 바운더리 박스(Boundary Polygon)와의 교점을 계산해 외곽 Edge를 유한한 영역으로 클리핑했다.
+평면 외곽 영역은 무한히 뻗어나가는 Unbounded Edge를 갖는다. 바운더리 박스와의 교점을 계산해 외곽 Edge를 유한한 영역으로 클리핑했다.
