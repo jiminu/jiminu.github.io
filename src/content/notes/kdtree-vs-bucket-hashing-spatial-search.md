@@ -1,5 +1,5 @@
 ---
-title: "3차원 동적 궤도 탐색에서 Bucket Hashing과 kd-tree의 성능·메모리 트레이드오프"
+title: "3차원 동적 궤도 탐색에서 Bucket Hashing과 kd-tree의 성능과 메모리 트레이드오프"
 description: "우주물체 충돌 위험 평가에서 격자 기반 해싱과 다차원 공간 분할 트리의 런타임 및 메모리 특성 비교"
 date: 2023-12-14
 draft: false
