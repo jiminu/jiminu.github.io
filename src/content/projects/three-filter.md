@@ -1,6 +1,6 @@
 ---
-title: "대규모 위성 충돌 방지를 위한 Three-filter 궤도 근접 탐색 최적화"
-description: "SGP4 궤도 전파와 kd-tree 기하 해싱을 결합해 24,000+개 우주물체의 All-vs-All 충돌 위험 탐색을 96% 사전 차단"
+title: "대규모 위성 충돌 방지를 위한 Three-filter 궤도 근접 탐색"
+description: "SGP4 궤도 전파와 kd-tree를 결합해 24,000+개 우주물체의 All-vs-All Conjunction Assessment를 96% 사전 차단"
 date: 2023-12-14
 draft: false
 thumbnail: "/images/three-filter/overview.png"
@@ -12,7 +12,7 @@ LEO 우주물체 수가 급증하면서, Conjunction Assessment 연산 비용이
 
 이 프로젝트에서는 Three-filter 알고리즘(Perigee-Apogee, Orbit Path, Time Filter)에 kd-tree 공간 분할과 Bisection 수치 탐색을 결합해, 비충돌 쌍의 96% 이상을 사전 필터링하고 연산 시간을 58% 단축했다.
 
-![Three-filter 및 기하 해싱 기반 근접 위험 평가 파이프라인 개요](/images/three-filter/overview.png)
+![Three-filter 및 kd-tree 기반 Conjunction Assessment 파이프라인 개요](/images/three-filter/overview.png)
 
 ## Three-filter 파이프라인
 

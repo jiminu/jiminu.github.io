@@ -1,16 +1,16 @@
 ---
-title: "Winged-Edge 자료구조 기반 보로노이 다이어그램 구현"
-description: "위상 기하학적 인접 관계를 O(1)에 탐색하는 자료구조와 2D 평면 보로노이 분할"
+title: "Winged-Edge 기반 Voronoi Diagram 구현"
+description: "Face, Edge, Vertex 인접 관계를 O(1)에 탐색하는 자료구조와 2D 평면 분할"
 date: 2022-02-11
 draft: false
 thumbnail: "/images/voronoi-diagram/overview.png"
 ---
 
-Voronoi Diagram은 2D 평면의 Seed Point 집합에서 각 점에 가장 가까운 영역들로 평면을 분할하는 구조다. Delaunay 삼각분할, MST, Convex Hull 계산 등에 쓰인다.
+Voronoi Diagram은 2D 평면의 Seed Point 집합에서 각 점에 가장 가까운 영역들로 평면을 분할하는 구조다. Delaunay Triangulation, MST, Convex Hull 계산 등에 쓰인다.
 
 이 프로젝트에서는 Face, Edge, Vertex의 인접 관계를 $O(1)$에 탐색할 수 있는 Winged-Edge 자료구조를 설계하고, C++로 2D Voronoi Diagram 생성과 Bounding Edge 순회 알고리즘을 구현했다.
 
-![1000개 점에 대한 2차원 보로노이 다이어그램 생성 결과](/images/voronoi-diagram/overview.png)
+![1000개 점에 대한 2D Voronoi Diagram 생성 결과](/images/voronoi-diagram/overview.png)
 
 ## Winged-Edge 자료구조
 

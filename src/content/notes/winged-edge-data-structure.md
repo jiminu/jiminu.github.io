@@ -1,6 +1,6 @@
 ---
-title: "Winged-Edge 자료구조로 기하 다이어그램의 위상 관계를 다루는 방법"
-description: "Face, Edge, Vertex 간의 인접 관계를 포인터 8개로 O(1)에 탐색하는 위상 자료구조"
+title: "Winged-Edge 자료구조로 Topology를 다루는 방법"
+description: "Face, Edge, Vertex 간의 인접 관계를 포인터 8개로 O(1)에 탐색하는 자료구조"
 date: 2022-02-11
 draft: false
 project: voronoi-diagram

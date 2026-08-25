@@ -1,6 +1,6 @@
 ---
-title: "외판원 문제를 위한 보로노이 기반 발견적 해법"
-description: "Voronoi Diagram과 Delaunay 삼각분할을 활용한 대규모 TSP 근사 최적화"
+title: "Voronoi 기반 대규모 TSP 근사 최적화"
+description: "Voronoi Diagram과 Delaunay Triangulation을 활용한 대규모 TSP 근사 최적화"
 date: 2022-06-27
 draft: false
 thumbnail: "/images/tsp-with-vd/overview.png"
@@ -18,7 +18,7 @@ TSP(Traveling Salesperson Problem)는 모든 노드를 한 번씩 방문하고 �
 
 Delaunay Triangulation 그래프는 유클리드 평면의 MST를 항상 포함한다. Delaunay Triangulation을 사용하면 Edge 수를 $3n - 3 - k$개($k$는 Convex Hull 점 개수)로 줄여 $O(n)$ 수준으로 유지하면서도, 최적 순회 경로에 필요한 주요 Edge들을 보존할 수 있다.
 
-![보로노이 다이어그램과 들로네 삼각분할](/images/tsp-with-vd/delaunay.png)
+![Voronoi Diagram과 Delaunay Triangulation](/images/tsp-with-vd/delaunay.png)
 
 ## 근사 알고리즘 파이프라인
 
