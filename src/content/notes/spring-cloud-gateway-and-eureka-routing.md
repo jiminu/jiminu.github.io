@@ -1,7 +1,7 @@
 ---
 title: "Spring Cloud Gateway와 Eureka를 활용한 마이크로서비스 라우팅"
 description: "동적 서비스 디스커버리와 API 게이트웨이 필터 체인을 통한 마이크로서비스 중앙 제어"
-date: 2023-01-20
+date: 2025-10-13
 draft: false
 ---
 
