@@ -148,6 +148,7 @@ time,
   height: 4.5rem;
   object-fit: cover;
   border: 1px solid var(--border);
+  background: #ffffff;
 }
 
 .entry-list a {
@@ -233,6 +234,7 @@ time,
   height: auto;
   margin: 2rem 0;
   border: 1px solid var(--border);
+  background: #ffffff;
 }
 
 .related-section {
