@@ -29,9 +29,11 @@ const remarkRejectRawHtml = () => {
   };
 };
 
-const remarkRejectMiddleDot = () => {
+const middleDotSeparators = /[·•ㆍ・]/;
+
+const remarkRejectMiddleDotSeparators = () => {
   const walk = (node, file) => {
-    if (node.type === 'text' && /[·•ㆍ・]/.test(node.value)) {
+    if (node.type === 'text' && middleDotSeparators.test(node.value)) {
       const source = file?.history?.[0]
         ? file.history[0].split('/').slice(-4).join('/')
         : file?.path
@@ -39,7 +41,7 @@ const remarkRejectMiddleDot = () => {
           : 'Markdown';
       const line = node.position?.start?.line;
       throw new Error(
-        `Middle dot (·) is not allowed in ${source}${line ? `:${line}` : ''}. Use standard conjunctions or commas instead.`,
+        `Middle-dot-like separators (·, •, ㆍ, ・) are not allowed in ${source}${line ? `:${line}` : ''}. Use natural conjunctions or commas instead.`,
       );
     }
     if (node.children && Array.isArray(node.children)) {
@@ -59,7 +61,7 @@ export default defineConfig({
   integrations: [sitemap()],
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkMath, remarkRejectRawHtml, remarkRejectMiddleDot],
+      remarkPlugins: [remarkMath, remarkRejectRawHtml, remarkRejectMiddleDotSeparators],
       rehypePlugins: [rehypeKatex],
     }),
   },

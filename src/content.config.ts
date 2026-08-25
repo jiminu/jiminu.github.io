@@ -1,14 +1,16 @@
 import { defineCollection, reference, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-const noMiddleDot = (field: string) =>
-  z.string().refine((val) => !/[·•ㆍ・]/.test(val), {
-    message: `Middle dot (·) is not allowed in ${field}. Use standard conjunctions or commas instead.`,
+const middleDotSeparators = /[·•ㆍ・]/;
+
+const noMiddleDotSeparator = (field: string) =>
+  z.string().refine((val) => !middleDotSeparators.test(val), {
+    message: `Middle-dot-like separators (·, •, ㆍ, ・) are not allowed in ${field}. Use natural conjunctions or commas instead.`,
   });
 
 const baseSchema = z.object({
-  title: noMiddleDot('title'),
-  description: noMiddleDot('description'),
+  title: noMiddleDotSeparator('title'),
+  description: noMiddleDotSeparator('description'),
   date: z.coerce.date(),
   draft: z.boolean().default(false),
   thumbnail: z.string().optional(),
