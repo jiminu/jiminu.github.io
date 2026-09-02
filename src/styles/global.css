@@ -221,6 +221,24 @@ time,
   text-decoration: underline;
 }
 
+.entry-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+
+.entry-body th,
+.entry-body td {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.entry-body th {
+  text-align: left;
+}
+
 .entry-body pre {
   max-width: 100%;
   overflow-x: auto;
