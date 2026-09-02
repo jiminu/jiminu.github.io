@@ -224,13 +224,13 @@ time,
 .entry-body table {
   width: 100%;
   border-collapse: collapse;
-  white-space: nowrap;
 }
 
 .entry-body th,
 .entry-body td {
   padding: 0.5rem;
   border-bottom: 1px solid var(--border);
+  overflow-wrap: anywhere;
 }
 
 .entry-body th {
@@ -330,5 +330,6 @@ time,
   .entry-body table {
     display: block;
     overflow-x: auto;
+    white-space: nowrap;
   }
 }
