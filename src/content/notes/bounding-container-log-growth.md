@@ -73,21 +73,22 @@ docker run \
   my-api
 ```
 
-기존 컨테이너를 바로 바꾸기 어려운 환경이라면 logrotate로 JSON 파일을 관리할 수도 있다.
+Docker의 JSON 파일은 Docker daemon이 관리하는 파일이다. 외부 도구로 파일을 회전하거나
+`copytruncate`하는 방식은 daemon의 로그 처리와 충돌하거나 일부 로그를 잃을 수 있으므로, 상시
+정책으로 사용하지 않는다. 새 컨테이너부터 `--log-opt` 또는 Docker daemon 설정으로 회전을
+고정하는 편이 안전하다.
 
-```text
-/var/lib/docker/containers/*/*-json.log {
-  rotate 3
-  daily
-  compress
-  missingok
-  delaycompress
-  copytruncate
-  maxsize 50M
-}
+`max-size=20m`, `max-file=5`라면 컨테이너 하나의 Docker JSON 로그 상한은 대략 100MiB다.
+이 값은 애플리케이션 파일 로그와 journal을 포함하지 않으므로, 디스크 여유 공간을 계산할 때
+세 경로의 상한을 합산해야 한다.
+
+daemon의 기본 logging driver를 바꿔도 기존 컨테이너에는 자동 적용되지 않는다. 배포 때 새
+컨테이너를 만든 뒤 아래처럼 실제 설정을 확인한다.
+
+```bash
+docker inspect my-api --format '{{json .HostConfig.LogConfig}}'
+docker inspect my-api --format '{{json .Mounts}}'
 ```
-
-`copytruncate`는 Docker가 파일을 계속 열고 쓰는 상황에서 파일 이름을 바꾼 뒤 새 파일을 열도록 요구하지 않기 위한 선택이다. 아주 짧은 구간의 로그가 겹치거나 빠질 가능성이 있으므로, 새 컨테이너부터는 Docker 실행 옵션으로 회전 정책을 고정하는 편이 더 단순하다.
 
 ## journal도 영구 상한을 둔다
 
@@ -120,3 +121,22 @@ journalctl --disk-usage
 여기에 디스크 사용률 알림을 더해야 한다. 로그 정책은 정상 경로의 증가량을 제한하고, 알림은 예상보다 빠르게 증가하는 새로운 경로를 발견하게 해 준다.
 
 운영 로그 관리의 목표는 로그를 최소화하는 것이 아니다. 필요한 최근 진단 정보는 남기되, 어떤 경로도 서비스가 사용할 디스크 전체를 독점하지 못하게 만드는 것이다.
+
+## 적용 뒤에는 정책과 실제 사용량을 함께 확인한다
+
+설정 파일만 존재한다고 상한이 적용된 것은 아니다. 새 컨테이너의 log driver와 bind mount,
+journal의 현재 사용량, 루트 디스크 여유 공간을 같은 배포 점검에서 확인한다.
+
+```bash
+docker inspect my-api --format '{{json .HostConfig.LogConfig}}'
+docker inspect my-api --format '{{json .Mounts}}'
+journalctl --disk-usage
+df -h /
+```
+
+긴급 정리 명령은 과거 로그를 삭제하는 복구 수단이고, 회전·보존 설정은 재발 방지 수단이다.
+둘을 구분해 runbook에 기록하면 장애 중에도 삭제 범위와 복구 후 확인 항목을 빠뜨리지 않는다.
+
+## 참고 자료
+
+- [Docker JSON File logging driver](https://docs.docker.com/engine/logging/drivers/json-file/)
