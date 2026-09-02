@@ -2,7 +2,7 @@
 title: "Docker 운영 로그가 디스크를 채우기 전에 막는 세 겹의 보존 정책"
 description: "애플리케이션 파일 로그, Docker JSON 로그, systemd journal을 함께 제한해야 하는 이유"
 date: 2026-08-23
-draft: true
+draft: false
 ---
 
 운영 서버의 디스크 사용률이 빠르게 오를 때 애플리케이션 로그만 확인하면 원인을 놓치기 쉽다. 컨테이너 기반 서비스에서는 적어도 세 경로가 독립적으로 디스크를 사용한다.
