@@ -72,6 +72,12 @@ CPU 그래프만 보고 인스턴스를 키우기 전에, 어떤 작업이 CPU�
 네트워크 송신량도 낮아졌다. Write IOPS와 평균 latency가 모두 같은 방향으로 변한 것은 아니었지만,
 관측된 latency와 메모리, 저장공간에서 스토리지 압박을 가리키는 징후는 없었다.
 
+![RDS CPUUtilization 2주 추이 그래프](/images/rds-cpu-high-with-low-io/rds-cpu-utilization.png)
+
+2주 CloudWatch CPUUtilization에서 앞 구간에는 CPU 포화가 반복됐고, 뒤 구간에는 같은 형태의
+포화가 보이지 않았다. 이 그래프는 기간 전체의 반복 패턴을 보조적으로 보여주며, 아래 표의 15개
+datapoint 비교를 대체하지 않는다.
+
 | RDS 지표 | 변경 전 | 변경 후 |
 | --- | ---: | ---: |
 | CPU 평균 | 99.49% | 5.25% |
