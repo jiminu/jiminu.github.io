@@ -19,6 +19,11 @@ draft: false
 같은 서버의 루트 디스크가 가득 찼다. 애플리케이션 로그만으로도 서비스 운영에 필요한 디스크
 공간을 소진할 수 있다는 관측이다.
 
+![백엔드 CPU 5분 Average 그래프](/images/bounding-container-log-growth/backend-cpu-incident.png)
+
+백엔드 CPU 5분 Average에서 로그 증가로 디스크가 소진된 장애 구간과 높은 CPU 구간이 겹쳤다.
+그래프만으로 로그가 CPU 상승의 단독 원인임을 의미하지는 않는다.
+
 이후 별도 시점 스냅샷에서 두 백엔드 서버의 애플리케이션 파일 로그는 약 825MiB와 854MiB,
 Docker JSON 로그는 약 90MiB와 101MiB였다. 이 값들은 장애 구간과 같은 시점이나 같은
 컨테이너 실행 기간을 비교한 자료가 아니므로, 로그 보존 정책의 효과를 나타내는 전후 수치로
@@ -127,7 +132,7 @@ journalctl --disk-usage
 | 저장 경로 | 주된 책임 | 권장 제어 방식 |
 | --- | --- | --- |
 | 애플리케이션 파일 로그 | 요청, 도메인 오류, 진단 | 롤링 정책, 보존 기간, 총량, bind mount |
-| Docker JSON 로그 | stdout/stderr | `max-size`, `max-file` 또는 logrotate |
+| Docker JSON 로그 | stdout/stderr | `max-size`, `max-file` |
 | systemd journal | OS와 서비스 관리자 로그 | `SystemMaxUse`, `RuntimeMaxUse` |
 
 여기에 디스크 사용률 알림을 더해야 한다. 로그 정책은 정상 경로의 증가량을 제한하고, 알림은 예상보다 빠르게 증가하는 새로운 경로를 발견하게 해 준다.
