@@ -222,9 +222,7 @@ time,
 }
 
 .entry-body table {
-  display: block;
   width: 100%;
-  overflow-x: auto;
   border-collapse: collapse;
   white-space: nowrap;
 }
@@ -327,5 +325,10 @@ time,
 
   .note-list li {
     gap: 0.75rem;
+  }
+
+  .entry-body table {
+    display: block;
+    overflow-x: auto;
   }
 }
