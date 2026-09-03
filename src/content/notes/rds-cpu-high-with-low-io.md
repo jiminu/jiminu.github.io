@@ -96,14 +96,3 @@ datapoint 비교를 대체하지 않는다.
 가까운 시기에 함께 반영됐고, 과정, 참여 인원, 수업 상태 전환 시각도 두 구간에서 감사 가능하게
 기록되지는 않았다. 따라서 여기서 확인한 것은 **같은 길이의 수업 시간대에서 고부하가 재현되지
 않은 1차 관측**이며, 각 변경의 단독 기여율은 아니다.
-
-`absence_log`에 추가한 secondary index는 이후 INSERT, UPDATE, DELETE마다 유지 비용을 만들 수
-있으므로 Write IOPS 평균 증가에 기여했을 가능성은 있다. 그러나 비교 구간의 DML 건수와 I/O 크기가
-통제되지 않았고 Write IOPS 최대값도 증가하지 않았으므로, 이 수치만으로 인덱스를 원인으로 확정하지
-않는다. 다음 비교에서는 WriteThroughput, WriteLatency, DiskQueueDepth와 `absence_log` DML 건수를
-같은 구간에서 함께 확인한다.
-
-다음 관측에서는 과정과 실제 참여 인원, START/PAUSE/RESUME/END 시각, 배포 커밋과 이미지 태그를
-함께 남긴다. 요청 수는 SQL과 DEBUG 로그 감소량으로 추정하지 않고, 프록시 access log나 애플리케이션
-metric처럼 로그 정책과 독립된 출처에서 수집한다. CPU가 낮아도 상태 복구나 실시간 화면이 깨지면
-성공이 아니라는 기능 검증도 같은 표에 남긴다.
