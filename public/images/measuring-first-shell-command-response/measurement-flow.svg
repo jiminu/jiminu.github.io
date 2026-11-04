@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="252" viewBox="0 0 840 252" role="img" aria-labelledby="title desc">
+  <title id="title">셸 측정 구간</title>
+  <desc id="desc">첫 프롬프트를 받은 즉시 첫 명령을 보내고 응답을 측정한다. 그 뒤 100ms를 기다려 이후 명령 응답을 세 번 측정한다. 구간 길이는 실제 소요 시간에 비례하지 않는다.</desc>
+  <style>
+    text { font: 19px -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif; fill: #333; }
+    .note { font-size: 16px; fill: #666; }
+    path { fill: none; stroke: #444; stroke-width: 1.25; }
+  </style>
+  <rect width="840" height="252" fill="white"/>
+  <text x="147" y="47" text-anchor="middle">첫 프롬프트 시간</text>
+  <text x="350" y="47" text-anchor="middle">첫 명령 응답</text>
+  <text x="694" y="47" text-anchor="middle">이후 명령 응답 x3</text>
+  <path d="M48 73 V64 H246 V73 M258 73 V64 H442 V73 M578 73 V64 H810 V73"/>
+  <path d="M48 111 H810 M48 104 V118 M252 104 V118 M448 104 V118 M572 104 V118 M810 104 V118"/>
+  <text x="510" y="100" text-anchor="middle" class="note">100ms 대기</text>
+  <text x="48" y="151">셸 실행</text>
+  <text x="252" y="151" text-anchor="middle">첫 프롬프트</text>
+  <text x="252" y="179" text-anchor="middle" class="note">즉시 : 전송</text>
+  <text x="448" y="151" text-anchor="middle">다음 프롬프트</text>
+  <text x="694" y="151" text-anchor="middle">: 전송과 응답 반복</text>
+  <text x="48" y="226" class="note">실행 순서만 표시. 구간 길이는 소요 시간과 무관.</text>
+</svg>

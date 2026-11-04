@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="298" viewBox="0 0 840 298" role="img" aria-labelledby="title desc">
+  <title id="title">테넌트별 migration 실행</title>
+  <desc id="desc">관리 서비스가 각 DataSource에 공통 폴더와 해당 테넌트 폴더를 지정해 migrate를 호출한다. A, B, C는 익명화한 테넌트 이름이다.</desc>
+  <style>
+    text { font: 19px -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif; fill: #333; }
+    .code { font: 18px ui-monospace, Menlo, monospace; }
+    .note { font-size: 16px; fill: #666; }
+    path, rect.node { fill: none; stroke: #444; stroke-width: 1.25; }
+  </style>
+  <rect width="840" height="298" fill="white"/>
+  <rect x="28" y="111" width="152" height="54" class="node"/>
+  <text x="104" y="145" text-anchor="middle">관리 서비스</text>
+  <path d="M180 138 H220 M220 58 V218 M220 58 H250 M220 138 H250 M220 218 H250"/>
+  <text x="270" y="64" class="code">common + tenant-a</text>
+  <text x="270" y="144" class="code">common + tenant-b</text>
+  <text x="270" y="224" class="code">common + tenant-c</text>
+  <text x="570" y="32" text-anchor="middle" class="code">migrate()</text>
+  <path d="M494 58 H638 M630 53 L638 58 L630 63 M494 138 H638 M630 133 L638 138 L630 143 M494 218 H638 M630 213 L638 218 L630 223"/>
+  <rect x="654" y="34" width="152" height="48" class="node"/>
+  <rect x="654" y="114" width="152" height="48" class="node"/>
+  <rect x="654" y="194" width="152" height="48" class="node"/>
+  <text x="730" y="65" text-anchor="middle">A DB</text>
+  <text x="730" y="145" text-anchor="middle">B DB</text>
+  <text x="730" y="225" text-anchor="middle">C DB</text>
+  <text x="28" y="278" class="note">각 DataSource에 common과 해당 테넌트 폴더를 함께 지정.</text>
+</svg>
