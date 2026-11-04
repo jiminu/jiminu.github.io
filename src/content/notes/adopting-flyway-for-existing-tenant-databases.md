@@ -1,7 +1,7 @@
 ---
 title: "운영 중인 테넌트 DB에 Flyway 도입하기"
 description: "수동으로 적용하던 스키마 변경을 Flyway로 옮기면서 기존 DB의 기준선, 테넌트별 실행, 공유 DB의 배포 순서를 정한 기록"
-date: 2026-11-04
+date: 2026-10-23
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "첫 프롬프트와 첫 명령 응답을 따로 측정한 이유"
 description: "Zsh 플러그인 지연 로딩을 다루면서 첫 명령 응답 측정을 추가하고, 그 지표로 확인할 수 있는 범위를 수정한 기록"
-date: 2026-11-04
+date: 2026-11-03
 draft: false
 project: selfishell
 ---
